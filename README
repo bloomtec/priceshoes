@@ -1,0 +1,6 @@
+NO TIENE CFK EDITOR
+NOVEDAD NO ES UNA CATEGORIA EN REALIDAD, todos los productos marcados como novedad aparecen en esta ruta:
+http://localhost/priceshoes/categories/news
+
+por lo tanto en el menu de arriba hay que poner el link novedades a ese link
+
