@@ -105,7 +105,7 @@ $(function(){
 	lang: 'es',
 	trigger: true, 
 	yearRange: [-60,0] ,
-	format: 'dd, mmmm yyyy',	// the format displayed for the user
+	format: 'dd/mm/yyyy',	// the format displayed for the user
 	selectors: true,             	// whether month/year dropdowns are shown
 	min: -100,                    // min selectable day (100 days backwards)
 	max: 100,                    	// max selectable day (100 days onwards)

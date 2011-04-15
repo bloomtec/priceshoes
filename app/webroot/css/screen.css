@@ -1794,6 +1794,10 @@ ul.cuadros-tallas li{
 	text-align:center;
 }
 
+#crear-usuario legend {
+	font-size:14px;
+}
+
 #crear-usuario .calendario{
 	width: 275px;
 }

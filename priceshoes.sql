@@ -333,8 +333,8 @@ DROP TABLE IF EXISTS `priceshoes`.`carts` ;
 CREATE  TABLE IF NOT EXISTS `priceshoes`.`carts` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `inventory_id` INT NOT NULL ,
-  `qty` INT NOT NULL DEFAULT 0 ,
-  `ct_session_id` INT NULL ,
+  `cantidad` INT NOT NULL DEFAULT 0 ,
+  `session_id` VARCHAR(45) NOT NULL ,
   `created` DATETIME NULL ,
   `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
