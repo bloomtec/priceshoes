@@ -83,5 +83,7 @@ $(document).ready(function() {
 		$('ul.galeria li').removeClass('selected');
 		$(this).addClass("selected");
 	});
+	
+
 		
 });
