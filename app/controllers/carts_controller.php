@@ -19,18 +19,10 @@ class CartsController extends AppController {
 		return $this -> Cart -> getCartContent($this -> session_id);
 	}
 
-	function getCart() {
-		$carts = $this -> Cart -> find('all', array('conditions' => array('Cart.session_id' => $this -> passedArgs['s']), 'recursive' => 2));
-		if(isset($this -> params['requested'])) {
-			return $carts;
-		}
-		$this -> set('carts', $carts);
-	}
-
 	function add() {
 		$data = $this -> Inventory -> findById($this -> inventory_id);
-
-		if(is_array($data) && $data['Inventory']['disponible'] != 0) {
+		
+		if(is_array($data) && !($data['Inventory']['disponible'] = 1)) {
 			$this -> Session -> setFlash('Lo que ha pedido ya no se encuentra en stock');
 			$this -> redirect('/');
 		}
@@ -51,6 +43,14 @@ class CartsController extends AppController {
 		$this -> Cart -> cleanUp();
 		$this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
 	}
+	
+	function getCart() {
+		$carts = $this -> Cart -> find('all', array('conditions' => array('Cart.session_id' => $this -> passedArgs['s']), 'recursive' => 2));
+		if(isset($this -> params['requested'])) {
+			return $carts;
+		}
+		$this -> set('carts', $carts);
+	}
 
 	function view() {
 		function view() {
@@ -60,16 +60,17 @@ class CartsController extends AppController {
 	}
 
 	function remove() {
-		$this -> Cart -> emptyBasket($this -> passedArgs['category_id']);
+		$this -> Cart -> emptyBasket($this -> passedArgs['cart_id']);
 		if($this -> Cart -> isCartEmpty($this -> session_id)) {
 			$this -> redirect( array('controller' => 'categories', 'action' => 'index'));
 		} else {
-			$this -> redirect( array('controller' => 'categories', 'action' => 'view'));
+			$this -> redirect( array('controller' => 'inventories', 'action' => 'index'));
 		}
 	}
 
 	function updates() {
 		$cart = array();
+		debug($this->data);
 		foreach($this->data as $key => $val) {
 			if( is_array($val)) {
 				continue;

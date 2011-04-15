@@ -12,21 +12,14 @@ class Cart extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
 	);
 	
 	/*
  	Get all item in current session
  	from shopping cart table
  	*/
-	function getCart($pid, $session_id) {
-		return $this -> find('all', array('conditions' => array('Cart.inventory_id' => $iid, 'Cart.session_id' => $session_id), 'order' => 'Cart.id ASC'));
+	function getCart($inventory_id, $session_id) {
+		return $this -> find('all', array('conditions' => array('Cart.inventory_id' => $inventory_id, 'Cart.session_id' => $session_id), 'order' => 'Cart.id ASC'));
 	}
 
 	function isCartEmpty($session_id) {
@@ -70,9 +63,9 @@ class Cart extends AppModel {
 		
 		$sql = "SELECT
 					carts.id, carts.inventory_id, carts.cantidad,
-					inventories.product_id, inventories.talla_id, inventories.color_id,
-					products.precio, products.nombre, products.imagen,
-					categories.nombre, categories.descripcion, categories.imagen
+					inventories.id, inventories.talla_id, inventories.color_id,
+					products.id, products.precio, products.nombre, products.imagen,
+					categories.id, categories.nombre, categories.descripcion, categories.imagen
 				FROM carts, inventories, products, categories
 				WHERE carts.session_id = '$session_id'
 				AND inventories.id = carts.inventory_id
@@ -99,8 +92,8 @@ class Cart extends AppModel {
 
 	function doUpdate($nueva_cantidad, $cart_id) {
 		// update product quantity		
-		$this -> read(null, $cart_id);
-		$this -> set('cantidad', $nueva_cantidad);
+		$this -> id = $cart_id;
+		$this -> cantidad = $nueva_cantidad;
 		$this -> save();
 	}
 	

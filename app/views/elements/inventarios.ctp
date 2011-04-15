@@ -6,7 +6,7 @@
 <div class="contenedor_inventarios">
 	<?php
 		if ( $inventario['Product']['imagen'] ) {
-	        $img = '/img/uploads/100x100/' . $inventario['Product']['imagen'];
+	        $img = '/img/uploads/200x200/' . $inventario['Product']['imagen'];
 	    } else {
     	    $img = '/img/inactivo.png';
 		}
