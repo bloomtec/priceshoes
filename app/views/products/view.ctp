@@ -58,9 +58,13 @@
 				Tallas:
 				<ul class="cuadros-tallas">
 					<?php $inventarios=$this->requestAction("/products/getColores/".$product['Product']['id']); ?>
-			  		<?php if (!empty($inventarios)): ?>
+			  		<?php 
+			  			$i=0;
+			  			if (!empty($inventarios)): 
+						$i++;
+			  		?>
 			  		<?php foreach($inventarioActual["Talla"] as $talla): ?>
-			  		<li rel="<?php echo $talla['id'];?>"> <?php echo $talla["nombre"] ?></li>
+			  		<li rel="<?php echo $talla['id'];?>" class="<?php if($i==1) echo "selected"?>"> <?php echo $talla["nombre"] ?></li>
 			  		<?php endforeach;
 						endif;
 			  		?>	

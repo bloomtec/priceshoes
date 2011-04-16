@@ -9,7 +9,7 @@
 		echo $this->Form->input('description');
 		
 		//echo $this->Form->input('order');
-		echo $this->Form->input('content');
+		echo $this->Form->input('content',array("name"=>"editor"));
 		
 	?>
 	</fieldset>
@@ -22,6 +22,11 @@
 </div>
 
 <script type="text/javascript">
-					CKEDITOR.replace( 'data[Page][content]' );
+					CKEDITOR.replace( 'editor',{
+        				filebrowserUploadUrl : '/priceshoes/upload.php',
+        				filebrowserBrowseUrl : '/priceshoes/admin/images/wysiwyg',
+
+
+					} );
 	
 </script>
