@@ -21,12 +21,13 @@ $(function(){
 
 		change=function($this){
 			$.getJSON(server+"galleries/getByNombre/",{"nombre":$this.attr("rel")},function(gallery){
+				if(typeof gallery['Image']['0']!="undefined"){
 				$("#producto-showcase .galeria .imagen-container").html("<img src="+server+"img/uploads/360x360/"+gallery['Image']['0']['path']+">");
 				$("#producto-showcase .galeria .thumbs").html("");
 				$.each(gallery['Image'],function(i,image){
 					$("#producto-showcase .galeria .thumbs").append("<img src="+server+"img/uploads/100x100/"+image['path']+">");
 				});
-				$(".imagen-container img").draggable({  drag: function(event, ui) {
+				/*$(".imagen-container img").draggable({  drag: function(event, ui) {
 					if(ui.position.top>=0){// Controla limites horizontales
 						ui.position.top=0;
 					}
@@ -41,7 +42,11 @@ $(function(){
 					if(ui.position.top<=-maxTop){// Controla limites horizontales
 						ui.position.top=-maxTop;
 					}
-				}});
+				}});*/
+				}else{
+					//NO HAY GALERIA
+				}
+				
 			});
 		}
 		guardarEstado=function(){
@@ -88,6 +93,22 @@ $(function(){
 		$(".galeria .thumbs img").live("click",function(){
 			var newSrc=$(this).attr("src").replace("100x100","360x360");
 			$(".galeria .imagen-container img").attr("src",newSrc);
+		});
+		
+	}();
+	var carrito=function(){
+		$(".boton-carrito").click(function(){
+			var productTalla=$("ul.cuadros-colores li.selected").attr("rel").split("-");
+			var productID=productTalla[0];
+			var colorID=productTalla[1];
+			var tallaID=$("ul.cuadros-tallas li.selected").attr("rel");
+			$.post(server+"carts/ajaxAdd",{product_id:productID,color_id:colorID,talla_id:tallaID},function(data){
+				if(data){
+					
+				}else{
+					
+				}
+			});
 		});
 		
 	}();

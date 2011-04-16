@@ -28,7 +28,7 @@
 		<?php
 			echo $this->Html->meta('icon');
 	
-			echo $this->Html->css('filebrowser');
+			echo $this->Html->css('file_browser');
 			echo $this->Html->script("jquery.js");
 			echo $this->Html->script("ckeditor/ckeditor");
 			echo $this->Html->script("fileBrowser");
