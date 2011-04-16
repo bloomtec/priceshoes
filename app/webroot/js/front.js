@@ -117,7 +117,7 @@ $(function(){
 			 field = this.getInputs().filter("[name='" + name + "']"); 
 		return input.val() == field.val() ? true : [name]; 
 	});
-     $("#UsuarioCrearForm").validator(
+     $("#UserCrearForm").validator(
      	
      	
      );
