@@ -7,62 +7,62 @@
 			<div class="forma-linea">
 			
 			<div class="email forma-crear">
-				<label for="usuarioEmail">Dirección E-mail<br>(Este será tu usuario en <span>PriceShoes.com.co</span>)</label>
-				<input id="UserFieldEmail" type="email" required="required" minlength="9" name="data[User][email]">
+				<label for="UserFieldEmail">Dirección E-mail<br>(Este será tu usuario en <span>PriceShoes.com.co</span>)</label>
+				<input id="UserFieldEmail" type="email" required="required" minlength="9" name="data[User][UserFieldEmail]">
 			</div>
 			
 			<div class="email forma-crear">
-				<label for="usuarioEmail-repetir"><br>Escriba de nuevo tu dirección E-mail</label>
-				<input id="usuarioEmail-repetir" type="email" required="required" minlength="9" data-equals="data[User][email]" name="data[Usuario][email-repetir]">
+				<label for="UserFieldEmail-repetir"><br>Escriba de nuevo tu dirección E-mail</label>
+				<input id="UserFieldEmail-repetir" type="email" required="required" minlength="9" data-equals="data[User][email]" name="data[User][UserFieldEmail-repetir]">
 			</div>
 			
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
-			<?php echo $form->input("UserFieldpassword",array('div' => 'password forma-crear',"label"=>"Contraseña",'required'=>'required'));?>
-			<?php echo $form->input("UserFieldpassword-repetir",array('type'=>'password','div' => 'password forma-crear',"label"=>"Escribe de nuevo tu contraseña",'required'=>'required'));?>
+			<?php echo $form->input("FieldPassword",array('div' => 'password forma-crear',"label"=>"Contraseña",'required'=>'required'));?>
+			<?php echo $form->input("FieldPassword-repetir",array('type'=>'password','div' => 'password forma-crear',"label"=>"Escribe de nuevo tu contraseña",'required'=>'required'));?>
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
-			<?php echo $form->input("UserFieldnombres",array('div' => 'nombres forma-crear',"label"=>"Escribe tu (s) Nombre (s)",'required'=>'required'));?>
-			<?php echo $form->input("UserFieldapellidos",array('div' => 'nombre forma-crear',"label"=>"Escribe tu (s) Apellido (s)",'required'=>'required'));?>
+			<?php echo $form->input("FieldNombres",array('div' => 'nombres forma-crear',"label"=>"Escribe tu (s) Nombre (s)",'required'=>'required'));?>
+			<?php echo $form->input("FieldApellidos",array('div' => 'nombre forma-crear',"label"=>"Escribe tu (s) Apellido (s)",'required'=>'required'));?>
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
 				<div class="id forma-crear">
 					<?php
 		    		$options=array('cedula'=>'Cédula','extranjera'=>'C/Extranjería','pasaporte'=>'Pasaporte');
-		    		$attributes=array('legend'=>'Identificación','required'=>'required');
+		    		$attributes=array('legend'=>'Identificación','default' => 'cedula');
 		    		echo $this->Form->radio('tipoId',$options,$attributes);?>
 		    		<div style="clear:both"></div>
 		    		<?php echo $form->input("UserFieldId",array("label"=>false,'required'=>'required'));?>
 	    		</div>
-	    		<?php echo $form->input('UserFieldSexo', array("div"=>'sexo forma-crear','label'=>'Sexo','required'=>'required','options' => array('F'=>'Femenino','M'=>'Masculino'))); ?>
+	    		<?php echo $form->input('FieldSexo', array("div"=>'sexo forma-crear','label'=>'Sexo','required'=>'required','options' => array('F'=>'Femenino','M'=>'Masculino'))); ?>
 	    		<div class="forma-crear calendario">
 					<label>Fecha Nacimiento</label>
-					<input class="date" type="date" min="1950-01-01" required="required" name="data[User][fecha]">
+					<input class="date" type="date" min="1950-01-01" required="required" name="data[User][UserFieldFecha]">
 					<div style="clear:both"></div>
 				</div>
 	    		<div style="clear:both"></div>
     		</div>
     		<div class="forma-linea">
-			<?php echo $form->input("UserFieldpais",array('div' => 'residencia forma-crear',"label"=>"País de Residencia",'required'=>'required'));?>
-			<?php echo $form->input("UserFielddepartamento",array('div' => 'residencia forma-crear',"label"=>"Departamento",'required'=>'required'));?>
+			<?php echo $form->input("FieldPais",array('div' => 'residencia forma-crear',"label"=>"País de Residencia",'required'=>'required'));?>
+			<?php echo $form->input("FieldDepartamento",array('div' => 'residencia forma-crear',"label"=>"Departamento",'required'=>'required'));?>
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
-			<?php echo $form->input("UserFieldciudad",array('div' => 'forma-crear',"label"=>"Ciudad de Residencia",'required'=>'required'));?>
+			<?php echo $form->input("FieldCiudad",array('div' => 'forma-crear',"label"=>"Ciudad de Residencia",'required'=>'required'));?>
 			<div style="clear:both"></div>
 			</div>
 			<div style="clear:both"></div>
 			<div class="forma-linea">
-			<?php echo $form->input("UserFielddireccion",array('div' => 'direccion forma-crear',"label"=>"Dirección/Estado",'required'=>'required'));?>
-			<?php echo $form->input("userFieldapto",array('div' => 'apto forma-crear',"label"=>"Apto/Interior/Oficina",'required'=>'required'));?>
+			<?php echo $form->input("FieldDireccion",array('div' => 'direccion forma-crear',"label"=>"Dirección/Estado",'required'=>'required'));?>
+			<?php echo $form->input("FieldApto",array('div' => 'apto forma-crear',"label"=>"Apto/Interior/Oficina",'required'=>'required'));?>
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
-			<?php echo $form->input("UserFieldtelefono",array('div' => 'forma-crear',"label"=>"Teléfono Fijo"));?>
-			<?php echo $form->input("UserFieldmovil",array('div' => 'forma-crear',"label"=>"Teléfono Móvil"));?>
+			<?php echo $form->input("UserFieldTelefono",array('div' => 'forma-crear',"label"=>"Teléfono Fijo"));?>
+			<?php echo $form->input("UserFieldMovil",array('div' => 'forma-crear',"label"=>"Teléfono Móvil"));?>
 			<div style="clear:both"></div>
 			</div>
 			<div style="clear:both"></div>

@@ -1750,11 +1750,11 @@ ul.cuadros-tallas li{
 #crear-usuario .apto{
 	width: 220px;
 }
-#crear-usuario #UserDireccion {
+#crear-usuario #UserFieldDireccion {
 	width: 500px;
 }
 
-#crear-usuario #UserApto {
+#crear-usuario #UserFieldApto {
 	width: 200px;
 }
 
@@ -1826,6 +1826,7 @@ ul.cuadros-tallas li{
 	width: 100px;
 	
 }
+
 
 .error em {
 	display:block;
