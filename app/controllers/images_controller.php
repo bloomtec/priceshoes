@@ -3,12 +3,19 @@ class ImagesController extends AppController {
 
 	var $name = 'Images';
 	var $components=array("Attachment");
+	var $wysiwygPath="wysiwyg";
 
 	function admin_obtenerImagenes($galeriaID = null){
 		$this->layout='ajax';
 		$this->set('imagenes', $this->Image->find('all', array('conditions' => array('gallery_id' => $galeriaID))));
 	}
-	
+	function admin_wysiwyg(){//ESTA FUNCION MUESTRA EL LISTADO DE LAS IMAGENES SUBIDAS POR EL WYSIWYG
+		$this->layout="file_browser";
+		App::import("Folder");
+		$folder= new Folder(WWW_ROOT.$this->wysiwygPath);
+		$this->set("folder",$folder->read());
+		$this->set("folderPath","/".$this->wysiwygPath);
+	}
 	function index() {
 		$this->Image->recursive = 0;
 		$this->set('images', $this->paginate());

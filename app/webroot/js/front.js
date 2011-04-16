@@ -104,15 +104,24 @@ $(function(){
 	$(":date").dateinput({
 	lang: 'es',
 	trigger: true, 
-	yearRange: [-60,0] ,
+	yearRange: [-60,-10] ,
 	format: 'dd/mm/yyyy',	// the format displayed for the user
 	selectors: true,             	// whether month/year dropdowns are shown
-	min: -100,                    // min selectable day (100 days backwards)
-	max: 100,                    	// max selectable day (100 days onwards)
 	offset: [0, 0],            	// tweak the position of the calendar
 	speed: 'fast',               	// calendar reveal speed
 	firstDay: 1                  	// which day starts a week. 0 = sunday, 1 = monday etc..
 	
     });
+     $.tools.validator.fn("[data-equals]", "Value not equal with the $1 field", function(input) {
+		var name = input.attr("data-equals"),
+			 field = this.getInputs().filter("[name='" + name + "']"); 
+		return input.val() == field.val() ? true : [name]; 
+	});
+     $("#UsuarioCrearForm").validator(
+     	
+     	
+     );
+    
+   
     
 })

@@ -39,7 +39,7 @@
 		echo $this->Html->script("upload.js");
 		echo $this->Html->script("superfish.js");
 		echo $this->Html->script("ckeditor/ckeditor");
-
+		echo $this->Html->script("fileBrowser");
 
 		echo $this->Html->css("jquery-ui.css");
 

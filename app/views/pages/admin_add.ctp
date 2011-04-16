@@ -6,7 +6,7 @@
 		echo $this->Form->input('title');
 		echo $this->Form->input('description');
 		echo $this->Form->input('slug');
-		echo $this->Form->input('content');
+		echo $this->Form->input('content',array("name"=>"editor"));
 		
 
 	?>
@@ -20,6 +20,11 @@
 </div>
 
 <script type="text/javascript">
-					CKEDITOR.replace( 'data[Page][content]' );
+					CKEDITOR.replace( 'editor',{
+        				filebrowserUploadUrl : '/priceshoes/upload.php',
+        				filebrowserBrowseUrl : '/priceshoes/admin/images/wysiwyg',
+
+
+					} );
 	
 </script>
