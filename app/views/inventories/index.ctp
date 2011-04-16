@@ -1,8 +1,8 @@
-<div id="inventarios">
-	<?php echo $this->element("inventarios"); ?>
-</div>
 <div id="cesta">
 	<?php echo $this->element("cesta"); ?>
+</div>
+<div id="inventarios">
+	<?php echo $this->element("inventarios"); ?>
 </div>
 
 <!--

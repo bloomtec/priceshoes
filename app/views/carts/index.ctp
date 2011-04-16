@@ -1,11 +1,8 @@
 <?php
-	echo 'Welcome to the land of music!
-	<br />
-	Please select your own music product!
-	<br />
-	Thanks for dropping by!<br />';	
 	if ($inventory_id) {
-		//echo $this->element('product_details');	
+		$this->requestAction('/carts/add/inventory_id:' . $inventory_id);
+		echo $this->element('cesta');
+		echo $this->element('inventarios');
 	} else if ($category_id) {
 		echo $this->element('productos');	
 	} else {
