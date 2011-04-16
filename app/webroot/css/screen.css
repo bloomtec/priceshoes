@@ -1467,8 +1467,8 @@ ul.cuadros-tallas li{
 #contacto {
 	background: url("../img/trama-footer.png") repeat;
     color:white;
-    padding:22px;
-    width: 100%
+    width: 92%;
+    padding:4%;
     
 }
 
@@ -1536,8 +1536,7 @@ ul.cuadros-tallas li{
 
 #contacto .telefono-contacto{
 	float: left;
-    width: 186px;
-    
+    width: 163px;
 }
 
 #contacto .comentario-contacto{
@@ -1555,7 +1554,7 @@ ul.cuadros-tallas li{
 }
 
 #contacto #contactoTelefono{
-   width: 195px;
+   width: 163px;
 }
 
 /** End Contactenos **/
@@ -1717,7 +1716,7 @@ ul.cuadros-tallas li{
 	line-height: 18px;
 }
 
-#crear-usuario input[type=text], #crear-usuario input[type=password]{
+#crear-usuario input[type=text], #crear-usuario input[type=password],#crear-usuario input[type=email],#crear-usuario input[type=number]{
 	border:0;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -1780,26 +1779,65 @@ ul.cuadros-tallas li{
 
 #crear-usuario input[type=radio]{
 	float: left;
-	margin: 0;
+	margin: 0 10px;
 }
+
 
 #crear-usuario .date{
 	border:0;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
-	width: 200px;
+	width: 150px;
 	float:left;
 	margin-bottom: 10px;
 	height: 30px;
 	text-align:center;
 }
 
+
+
 #crear-usuario legend {
 	font-size:14px;
+	margin-bottom: 10px;
+	
+}
+
+#crear-usuario fieldset {
+	float:left;
 }
 
 #crear-usuario .calendario{
 	width: 275px;
+	margin-top:24px;
+}
+
+#crear-usuario .sexo{
+	width: 125px;
+	margin-top:25px;
+}
+
+#crear-usuario .sexo select{
+	float:left;
+	border:0;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 5px 0;
+	height: 30px;
+	width: 100px;
+	
+}
+
+.error em {
+	display:block;
+	width:0;
+	height:0;
+	border:10px solid;
+	border-color:#FFFE36 transparent transparent;
+
+	/* positioning */
+	position:absolute;
+	bottom:-17px;
+	left:60px;
 }
 
 /** End Registro Usuario **/
