@@ -4,8 +4,10 @@
 		echo $this->element('cesta');
 		echo $this->element('inventarios');
 	} else if ($category_id) {
-		echo $this->element('productos');	
+		echo $this->element('cesta');
+		echo $this->element('inventarios');	
 	} else {
-		echo $this->element('categorias');	
+		echo $this->element('cesta');
+		echo $this->element('inventarios');
 	}
 ?>

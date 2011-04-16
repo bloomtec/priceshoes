@@ -7,7 +7,7 @@
 	<tr>
 		<td colspan="2">Contenido Cesta</td>
 	</tr>
-	<?php 
+	<?php
 		foreach($cartContents as $cartContent) { 
 		// Subtotal Calculation
 		$subTotal += $cartContent['products']['precio'] * $cartContent['carts']['cantidad'];
