@@ -44,6 +44,52 @@ class CartsController extends AppController {
 		$this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
 	}
 	
+	function ajaxAdd(){
+		
+		$product_id = $_POST['product_id'];
+		$color_id = $_POST['color_id'];
+		$talla_id = $_POST['talla_id'];
+		
+		$inventoy_id = $this -> requestAction('/inventories/getInventoryID/'
+			. $product_id
+			. '/'
+			. $color_id
+			. '/'
+			. $talla_id);
+		
+		$data = $this -> Inventory -> findById($inventoy_id);
+		
+		if(is_array($data) && !($data['Inventory']['disponible'] = 1)) {
+			$this -> Session -> setFlash('Lo que ha pedido ya no se encuentra en stock');
+			// $this -> redirect('/');
+			
+			echo false;
+			
+			return;
+		}
+
+		// check if the product is already
+		// in cart table for this session
+		$sessionData = $this -> Cart -> getCart($inventoy_id, $this -> session_id);
+		if( empty($sessionData)) {
+			// put the product in cart table
+			$this -> Cart -> addCart($inventoy_id, $this -> session_id);
+		} else {
+			// update product quantity in cart table
+			$this -> Cart -> updateCart($inventoy_id, $this -> session_id);
+		}
+
+		// an extra job for us here is to remove abandoned carts.
+		// right now the best option is to call this function here
+		$this -> Cart -> cleanUp();
+		
+		// $this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
+		
+		echo true;
+		
+		return;
+	}
+	
 	function getCart() {
 		$carts = $this -> Cart -> find('all', array('conditions' => array('Cart.session_id' => $this -> passedArgs['s']), 'recursive' => 2));
 		if(isset($this -> params['requested'])) {
