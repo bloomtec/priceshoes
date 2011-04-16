@@ -109,6 +109,7 @@ $(function(){
 					
 				}
 			});
+			return false;
 		});
 		
 	}();
