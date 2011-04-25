@@ -2,7 +2,8 @@
 	<div class="titulo">
 		<h1>Mi Carrito <?php echo $this->Html->image('carrito_2.png', array('alt' => 'carrito'))?></h1>
 	</div>
-	<table id="cesta-tabla">
+<div class="container-tabla">	
+<table id="cesta-tabla">
 	<?php
 		$cartContents = $this->requestAction("/carts/getMiniCart/c:$category_id/p:$inventory_id/s:$session_id");
 		if (!empty($cartContents) && is_array($cartContents)) {
@@ -26,7 +27,7 @@
 				);
 			?>
 		</td>
-		<td>
+		<td style="vertical-align:middle">
 			<?php echo $html->link($cartContent['products']['nombre'], '/products/view/'.$cartContent['products']['id']);?>
 		</br>
 			<?php echo $cartContent['carts']['cantidad']; ?> x <?php echo '$' . $cartContent['products']['precio']; ?>
@@ -45,17 +46,15 @@
 		<td width="30%" align="right"><?=Configure::read('Shop.currency');?><?php echo '$' . $subTotal;?></td>
 		<td></td>
 	</tr>
-	<tr>
-		<td colspan="2">&nbsp;</td>
-	</tr>
 	<tr class="final">
 		<td colspan="2" align="center"><?php echo $html->link('Ir al carrito de compras','/carts/view');?></td>
 	</tr>
 	<?php
 		} else {
-			echo '<tr><td width="150">La cesta esta vacia</td></tr>';
+			echo '<tr class="final"><td>La cesta esta vacia</td></tr>';
 		}
     ?>
 	</table>
+</div>
 </div>
 

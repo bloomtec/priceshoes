@@ -78,12 +78,18 @@ ul, li {
 	margin: 0 auto;
 }
 
+.container-tabla{
+	overflow-y:auto;
+	max-height:270px;
+}
+
 #cesta-tabla {
 	width: 95%;
 	color:white;
 	background:none;
 	margin: 0 auto;
 	font-size:12px;
+	max-height:270px;
 }
 
 #cesta-tabla a {
@@ -1873,8 +1879,8 @@ ul.cuadros-tallas li{
 	background: url("../img/trama-footer.png") repeat;
 	float:left;
 	width: 100%;
-	min-height:270px;
-	overflow-y:auto;
+	margin-top: 14px;
+	margin-bottom: 20px;
 }
 
 #cesta .titulo{
@@ -1898,3 +1904,37 @@ ul.cuadros-tallas li{
 }
 	
 /** End Cesta **/
+
+/** Mis Favoritos **/
+
+#misfavoritos{
+	background: url("../img/trama-footer.png") repeat;
+	float:left;
+	width: 100%;
+	max-height:270px;
+}
+
+#misfavoritos .titulo{
+	background: url("../img/trama-encuesta.png") repeat-x;
+	text-align:center;
+	height:60px;
+	/*-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);*/
+}
+
+#misfavoritos .titulo img{
+	vertical-align:middle;
+	padding-left:10px;
+}
+
+#misfavoritos .titulo h1{
+	line-height: 60px;
+	color:#fff;
+	font-size:21px;
+}
+	
+/** End Cesta **/	
+	
+	
+	

@@ -1,7 +1,7 @@
 <?php echo $this->element("banner-promocionados");?>
 <div id="left-content-virtual">
 	 <?php echo $this->element("promociones");?>
-	 <?php echo $this->element("mas-vendidos");?>
+	 <?php echo $this->element("cesta");?>
 	 <div style="clear:both"></div>
 </div>
 <div id="right-content-virtual">
