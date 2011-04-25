@@ -78,10 +78,16 @@ ul, li {
 	margin: 0 auto;
 }
 
-#cesta {
-	width: 160px;
-	float: right;
+#cesta-tabla {
+	width: 100%;
+	color:white;
+	background:none;
 }
+
+#cesta-tabla tr td{
+	background:transparent;
+}
+
 
 #header{
 	height: 200px;	
@@ -673,6 +679,7 @@ form .submit input[type=submit]:hover {
 }
 
 /** End Sondeo Contenido **/
+
 
 /** Footer Home **/
 
@@ -1842,3 +1849,35 @@ ul.cuadros-tallas li{
 }
 
 /** End Registro Usuario **/
+
+/** Cesta **/
+
+#cesta{
+	background: url("../img/trama-footer.png") repeat;
+	float:left;
+	width: 100%;
+	min-height:270px;
+	overflow-y:auto;
+}
+
+#cesta .titulo{
+	background: url("../img/trama-encuesta.png") repeat-x;
+	text-align:center;
+	height:60px;
+	/*-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);*/
+}
+
+#cesta .titulo img{
+	vertical-align:middle;
+	padding-left:10px;
+}
+
+#cesta .titulo h1{
+	line-height: 60px;
+	color:#fff;
+	font-size:21px;
+}
+	
+/** End Cesta **/

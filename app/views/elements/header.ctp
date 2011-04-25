@@ -1,5 +1,5 @@
 <div id="header">
-	<h1><a href="">Priceshoes</a></h1>
+	<h1><?php echo $this->Html->link("Priceshoes",array("controller"=>"categories","action"=>"index")) ?></h1>
 		<div id="buscar">
 			<?php echo $form->create("Search",array("action"=>"search","controller"=>"searchs"));?>
 	            <fieldset>
