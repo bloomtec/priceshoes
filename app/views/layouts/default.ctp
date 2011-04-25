@@ -42,10 +42,11 @@
 			  <?php echo $this->element("header");?>			
 			<div id="content">
 				<?php echo $this->Session->flash(); ?>
-				<?php echo $content_for_layout; ?>
-			 <!-- <?php echo $this->element("contenido");?> -->
+			   <?php echo $content_for_layout; ?>
+			 
+			 <div style="clear:both"></div>
 			</div>
-			<div style="clear:both"></div>
+			
 		</div>
 		<div id="footer">
 			<div class="wrap">

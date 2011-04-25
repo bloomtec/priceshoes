@@ -78,10 +78,39 @@ ul, li {
 	margin: 0 auto;
 }
 
-#cesta {
-	width: 160px;
-	float: right;
+.container-tabla{
+	overflow-y:auto;
+	max-height:270px;
 }
+
+#cesta-tabla {
+	width: 95%;
+	color:white;
+	background:none;
+	margin: 0 auto;
+	font-size:12px;
+	max-height:270px;
+}
+
+#cesta-tabla a {
+	color:white;
+}
+
+#cesta-tabla tr {
+	background:transparent;
+	border-bottom:1px solid #fff;
+}
+
+#cesta-tabla tr.final{
+	background:transparent;
+	border-bottom:none;
+}
+
+#cesta-tabla tr td{
+	background:transparent;
+	border-bottom:none;
+}
+
 
 #header{
 	height: 200px;	
@@ -673,6 +702,7 @@ form .submit input[type=submit]:hover {
 }
 
 /** End Sondeo Contenido **/
+
 
 /** Footer Home **/
 
@@ -1842,3 +1872,69 @@ ul.cuadros-tallas li{
 }
 
 /** End Registro Usuario **/
+
+/** Cesta **/
+
+#cesta{
+	background: url("../img/trama-footer.png") repeat;
+	float:left;
+	width: 100%;
+	margin-top: 14px;
+	margin-bottom: 20px;
+}
+
+#cesta .titulo{
+	background: url("../img/trama-encuesta.png") repeat-x;
+	text-align:center;
+	height:60px;
+	/*-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);*/
+}
+
+#cesta .titulo img{
+	vertical-align:middle;
+	padding-left:10px;
+}
+
+#cesta .titulo h1{
+	line-height: 60px;
+	color:#fff;
+	font-size:21px;
+}
+	
+/** End Cesta **/
+
+/** Mis Favoritos **/
+
+#misfavoritos{
+	background: url("../img/trama-footer.png") repeat;
+	float:left;
+	width: 100%;
+	max-height:270px;
+}
+
+#misfavoritos .titulo{
+	background: url("../img/trama-encuesta.png") repeat-x;
+	text-align:center;
+	height:60px;
+	/*-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+  	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);*/
+}
+
+#misfavoritos .titulo img{
+	vertical-align:middle;
+	padding-left:10px;
+}
+
+#misfavoritos .titulo h1{
+	line-height: 60px;
+	color:#fff;
+	font-size:21px;
+}
+	
+/** End Cesta **/	
+	
+	
+	
