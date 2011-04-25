@@ -41,7 +41,8 @@ class CartsController extends AppController {
 		// an extra job for us here is to remove abandoned carts.
 		// right now the best option is to call this function here
 		$this -> Cart -> cleanUp();
-		$this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
+		$this -> redirect($this->referer());
+		//$this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
 	}
 	
 	function ajaxAdd(){
@@ -100,11 +101,13 @@ class CartsController extends AppController {
 
 	function remove() {
 		$this -> Cart -> emptyBasket($this -> passedArgs['cart_id']);
-		if($this -> Cart -> isCartEmpty($this -> session_id)) {
+		$this -> redirect($this->referer());
+		
+		/* if($this -> Cart -> isCartEmpty($this -> session_id)) {
 			$this -> redirect( array('controller' => 'carts', 'action' => 'view'));
 		} else {
 			$this -> redirect( array('controller' => 'inventories', 'action' => 'index'));
-		}
+		} */
 	}
 
 	function updates() {

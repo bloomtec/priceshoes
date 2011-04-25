@@ -52,6 +52,7 @@ class CategoriesController extends AppController {
 		$this->set("products",$this->paginate("Product",array("category_id"=>$id)));
 		$this->set('category', $this->Category->read(null, $id));
 	}
+	
 	function news($id = null) {
 		/*if (!$id) {
 			$this->Session->setFlash(__('Invalid category', true));
