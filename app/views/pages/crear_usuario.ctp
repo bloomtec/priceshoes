@@ -8,19 +8,19 @@
 			
 			<div class="email forma-crear">
 				<label for="UserFieldEmail">Dirección E-mail<br>(Este será tu usuario en <span>PriceShoes.com.co</span>)</label>
-				<input id="UserFieldEmail" type="email" required="required" minlength="9" name="data[User][UserFieldEmail]">
+				<input id="UserFieldEmail" type="email" required="required" minlength="9" name="data[User][FieldEmail]">
 			</div>
 			
 			<div class="email forma-crear">
 				<label for="UserFieldEmail-repetir"><br>Escriba de nuevo tu dirección E-mail</label>
-				<input id="UserFieldEmail-repetir" type="email" required="required" minlength="9" data-equals="data[User][email]" name="data[User][UserFieldEmail-repetir]">
+				<input id="UserFieldEmail-repetir" type="email" required="required" minlength="9" name="data[User][FieldEmail-repetir]">
 			</div>
 			
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
-			<?php echo $form->input("FieldPassword",array('div' => 'password forma-crear',"label"=>"Contraseña",'required'=>'required'));?>
-			<?php echo $form->input("FieldPassword-repetir",array('type'=>'password','div' => 'password forma-crear',"label"=>"Escribe de nuevo tu contraseña",'required'=>'required'));?>
+			<?php echo $form->input("FieldPassword",array('type'=>'password','div' => 'password forma-crear',"label"=>"Contraseña",'required'=>'required'));?>
+			<?php echo $form->input("FieldPassword-repetir",array('type'=>'password','div' => 'password forma-crear',"label"=>"Escribe de nuevo tu contraseña",'required'=>'required','data-equals'=>"data[User][FieldPassword]"));?>
 			<div style="clear:both"></div>
 			</div>
 			<div class="forma-linea">
@@ -35,7 +35,7 @@
 		    		$attributes=array('legend'=>'Identificación','default' => 'cedula');
 		    		echo $this->Form->radio('tipoId',$options,$attributes);?>
 		    		<div style="clear:both"></div>
-		    		<?php echo $form->input("UserFieldId",array("label"=>false,'required'=>'required'));?>
+		    		<?php echo $form->input("FieldId",array("label"=>false,'required'=>'required'));?>
 	    		</div>
 	    		<?php echo $form->input('FieldSexo', array("div"=>'sexo forma-crear','label'=>'Sexo','required'=>'required','options' => array('F'=>'Femenino','M'=>'Masculino'))); ?>
 	    		<div class="forma-crear calendario">
