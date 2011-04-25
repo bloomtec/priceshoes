@@ -79,13 +79,30 @@ ul, li {
 }
 
 #cesta-tabla {
-	width: 100%;
+	width: 95%;
 	color:white;
 	background:none;
+	margin: 0 auto;
+	font-size:12px;
+}
+
+#cesta-tabla a {
+	color:white;
+}
+
+#cesta-tabla tr {
+	background:transparent;
+	border-bottom:1px solid #fff;
+}
+
+#cesta-tabla tr.final{
+	background:transparent;
+	border-bottom:none;
 }
 
 #cesta-tabla tr td{
 	background:transparent;
+	border-bottom:none;
 }
 
 
