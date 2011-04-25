@@ -95,10 +95,7 @@ class CartsController extends AppController {
 	}
 
 	function view() {
-		function view() {
-			$this -> layout = 'checkbase';
-		}
-
+		$this -> layout = 'vista_carro';
 	}
 
 	function remove() {

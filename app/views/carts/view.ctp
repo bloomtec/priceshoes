@@ -86,7 +86,8 @@
 				}
 				if (isset($str)) {
   					$str = implode("_", $str);
-  					echo $form->button('Proceder a pagar', array( 'class'=>'box' , 'onClick'=>"window.location.href='".$this->base."/orders/checkout/cts:".$str."'" ) ) ;
+  					// echo $form->button('Proceder a pagar', array( 'class'=>'box' , 'onClick'=>"window.location.href='".$this->base."/orders/checkout/cts:".$str."'" ) ) ;
+					echo $html->link('Proceder a pagar','/orders/checkout/cts:' . $str . "'" );
 				}
   			?>
   		</td>

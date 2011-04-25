@@ -16,7 +16,8 @@ class CategoriesController extends AppController {
 		// get all categories ordered by category name		
 		$categories = $this->Category->find('all');
 		// format the categories for display
-		return $this->Category->buildCategories($categories, $this->passedArgs['c']);		
+		//return $this->Category->buildCategories($categories, $this->passedArgs['c']);
+		return $categories;
 	}
 	
 	function menuCategories(){
