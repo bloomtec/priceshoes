@@ -1,4 +1,4 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+﻿SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
@@ -347,6 +347,107 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`carts` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `priceshoes`.`clientes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`clientes` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`clientes` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `genero` CHAR(1) NULL ,
+  `nombre` VARCHAR(45) NULL ,
+  `apellido` VARCHAR(45) NULL ,
+  `fecha_nacimiento` DATETIME NULL ,
+  `email` VARCHAR(45) NULL ,
+  `direccion` VARCHAR(45) NULL ,
+  `telefono` VARCHAR(45) NULL ,
+  `password` VARCHAR(45) NULL ,
+  `created` DATETIME NULL ,
+  `updated` DATETIME NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `priceshoes`.`order_states`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`order_states` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`order_states` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `estado` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `priceshoes`.`orders`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`orders` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `cliente_id` INT NOT NULL ,
+  `estado_id` INT NOT NULL ,
+  `created` DATETIME NULL ,
+  `updated` DATETIME NULL ,
+  `envio_nombre` VARCHAR(45) NULL ,
+  `envio_apellido` VARCHAR(45) NULL ,
+  `envio_direccion` VARCHAR(45) NULL ,
+  `envio_telefono` VARCHAR(45) NULL ,
+  `envio_ciudad` VARCHAR(45) NULL ,
+  `envio_estado` VARCHAR(45) NULL ,
+  `envio_costo` DECIMAL(5,2) NULL ,
+  `pago_nombre` VARCHAR(45) NULL ,
+  `pago_apellido` VARCHAR(45) NULL ,
+  `pago_direccion` VARCHAR(45) NULL ,
+  `pago_telefono` VARCHAR(45) NULL ,
+  `pago_ciudad` VARCHAR(45) NULL ,
+  `pago_estado` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `orders_clientes1` (`cliente_id` ASC) ,
+  INDEX `orders_order_states1` (`estado_id` ASC) ,
+  CONSTRAINT `orders_clientes1`
+    FOREIGN KEY (`cliente_id` )
+    REFERENCES `priceshoes`.`clientes` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `orders_order_states1`
+    FOREIGN KEY (`estado_id` )
+    REFERENCES `priceshoes`.`order_states` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `priceshoes`.`order_items`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`order_items` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`order_items` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `inventory_id` INT NOT NULL ,
+  `order_id` INT NOT NULL ,
+  `cantidad` INT NOT NULL ,
+  `created` DATETIME NULL ,
+  `updated` DATETIME NULL ,
+  PRIMARY KEY (`id`, `inventory_id`) ,
+  INDEX `order_items_inventories1` (`inventory_id` ASC) ,
+  INDEX `order_items_orders1` (`order_id` ASC) ,
+  CONSTRAINT `order_items_inventories1`
+    FOREIGN KEY (`inventory_id` )
+    REFERENCES `priceshoes`.`inventories` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `order_items_orders1`
+    FOREIGN KEY (`order_id` )
+    REFERENCES `priceshoes`.`orders` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -368,6 +469,19 @@ COMMIT;
 START TRANSACTION;
 USE `priceshoes`;
 INSERT INTO `priceshoes`.`users` (`id`, `role_id`, `username`, `password`, `email`, `created`, `updated`) VALUES (1, 1, 'administrador', 'e2acc0c6bfd00a2d36ffecb19918d45fa92c5bee', NULL, NULL, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `priceshoes`.`order_states`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `priceshoes`;
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (1, 'Nuevo');
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (2, 'Pagado');
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (3, 'Enviado');
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (4, 'Completado');
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (5, 'Cancelado');
 
 COMMIT;
 
