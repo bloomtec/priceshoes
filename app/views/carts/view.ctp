@@ -8,7 +8,7 @@
 	   <td colspan="2" align="center">Item</td>
 	   <td align="center">Unit Price</td>
 	
-	   <td width="75" align="center">Quantity</td>
+	   <td width="75" align="center">Cantidad</td>
 	   <td align="center">Total</td>
 	  <td width="75" align="center">&nbsp;</td>
 	 </tr>
@@ -57,7 +57,7 @@
 		</td>
 		<td align="right">
 			<?php Configure::read('Shop.currency');?>
-			<?php echo $subTotal;?>
+			<?php if (isset($subTotal)) echo $subTotal;?>
 		</td>
 		<td width="75" align="center">
 			&nbsp;
@@ -77,15 +77,17 @@
 	<tr align="center">
 		<td>
 			<!-- <?php echo $form->button('Seguir Comprando', array( 'class'=>'box' , 'onClick'=>"window.location.href='".$this->base."/inventories/index" ) ) ;?> -->
-			<?php echo $html->link('Seguir Comprando','/inventories/index');?>
+			<?php echo $html->link('Seguir Comprando','/categories/index');?>
 		</td>
 		<td>
 			<?php	
 			  	foreach($cartContents as $key=>$val) {
 					$str[] = $val['carts']['id'];
 				}
-  				$str = implode("_", $str);
-  				echo $form->button('Proceder a pagar', array( 'class'=>'box' , 'onClick'=>"window.location.href='".$this->base."/orders/checkout/cts:".$str."'" ) ) ;
+				if (isset($str)) {
+  					$str = implode("_", $str);
+  					echo $form->button('Proceder a pagar', array( 'class'=>'box' , 'onClick'=>"window.location.href='".$this->base."/orders/checkout/cts:".$str."'" ) ) ;
+				}
   			?>
   		</td>
   	</tr>

@@ -5,7 +5,8 @@ class InventoriesController extends AppController {
 	var $uses=array("Inventory","Gallery");
 	
 	function getInventoryID ( $product_id = null, $color_id = null, $talla_id = null ) {
-		return $this -> Inventory -> find('first', array('conditions' => array('product_id' => $product_id, 'talla_id' => $talla_id, 'color_id' => $color_id)));
+		$data = $this -> Inventory -> find('first', array('conditions' => array('product_id' => $product_id, 'talla_id' => $talla_id, 'color_id' => $color_id)));
+		return $data['Inventory']['id'];
 	}
 	
 	function index() {

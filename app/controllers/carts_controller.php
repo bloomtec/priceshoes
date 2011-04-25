@@ -60,11 +60,7 @@ class CartsController extends AppController {
 		$data = $this -> Inventory -> findById($inventoy_id);
 		
 		if(is_array($data) && !($data['Inventory']['disponible'] = 1)) {
-			$this -> Session -> setFlash('Lo que ha pedido ya no se encuentra en stock');
-			// $this -> redirect('/');
-			
 			echo false;
-			
 			return;
 		}
 
@@ -108,7 +104,7 @@ class CartsController extends AppController {
 	function remove() {
 		$this -> Cart -> emptyBasket($this -> passedArgs['cart_id']);
 		if($this -> Cart -> isCartEmpty($this -> session_id)) {
-			$this -> redirect( array('controller' => 'categories', 'action' => 'index'));
+			$this -> redirect( array('controller' => 'carts', 'action' => 'view'));
 		} else {
 			$this -> redirect( array('controller' => 'inventories', 'action' => 'index'));
 		}
