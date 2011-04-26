@@ -96,7 +96,6 @@ class CartsController extends AppController {
 	}
 
 	function view() {
-		$this -> layout = 'vista_carro';
 	}
 
 	function remove() {
@@ -111,14 +110,7 @@ class CartsController extends AppController {
 	}
 
 	function updates() {
-		$cart = array();
-		debug($this->data);
-		foreach($this->data as $key => $val) {
-			if( is_array($val)) {
-				continue;
-			}
-			$this -> Cart -> doUpdate($val, $key);
-		}
+		$this -> Cart -> doUpdate($this->data['Cart']['cantidad'], $this->data['Cart']['id']);
 		$this -> redirect( array('controller' => 'carts', 'action' => 'view'));
 	}
 

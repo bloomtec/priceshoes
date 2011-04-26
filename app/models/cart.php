@@ -91,9 +91,11 @@ class Cart extends AppModel {
 	}
 
 	function doUpdate($nueva_cantidad, $cart_id) {
-		// update product quantity		
-		$this -> id = $cart_id;
-		$this -> cantidad = $nueva_cantidad;
+		// update product quantity
+		$this -> read(null, $cart_id);
+		$this -> set('cantidad', $nueva_cantidad);		
+		//$this -> id = $cart_id;
+		//$this -> cantidad = $nueva_cantidad;
 		$this -> save();
 	}
 	

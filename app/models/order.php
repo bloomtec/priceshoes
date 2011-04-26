@@ -1,7 +1,7 @@
 <?php
 class Order extends AppModel {
 	var $name = 'Order';
-	var $displayField = 'estado_id';
+	var $displayField = 'id';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(

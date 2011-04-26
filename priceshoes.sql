@@ -381,11 +381,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `priceshoes`.`medios_de_pago`
+-- Table `priceshoes`.`pagar_medios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `priceshoes`.`medios_de_pago` ;
+DROP TABLE IF EXISTS `priceshoes`.`pagar_medios` ;
 
-CREATE  TABLE IF NOT EXISTS `priceshoes`.`medios_de_pago` (
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`pagar_medios` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `medio_de_pago` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -433,7 +433,7 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
     ON UPDATE NO ACTION,
   CONSTRAINT `orders_medios_de_pago1`
     FOREIGN KEY (`medio_de_pago` )
-    REFERENCES `priceshoes`.`medios_de_pago` (`id` )
+    REFERENCES `priceshoes`.`pagar_medios` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -506,11 +506,11 @@ INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (0, 'Creado');
 COMMIT;
 
 -- -----------------------------------------------------
--- Data for table `priceshoes`.`medios_de_pago`
+-- Data for table `priceshoes`.`pagar_medios`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `priceshoes`;
-INSERT INTO `priceshoes`.`medios_de_pago` (`id`, `medio_de_pago`) VALUES (1, 'tarjeta credito');
-INSERT INTO `priceshoes`.`medios_de_pago` (`id`, `medio_de_pago`) VALUES (2, 'tarjeta debito');
+INSERT INTO `priceshoes`.`pagar_medios` (`id`, `medio_de_pago`) VALUES (1, 'tarjeta credito');
+INSERT INTO `priceshoes`.`pagar_medios` (`id`, `medio_de_pago`) VALUES (2, 'tarjeta debito');
 
 COMMIT;

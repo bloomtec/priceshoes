@@ -1,29 +1,11 @@
 <?php
 class OrdersController extends AppController {
 
-    var $name = 'Orders';	
-	var $uses = array('Cart');
-
-	function checkout() {
-		$data = $this->passedArgs['cts'];
-		//$data = explode('_', $data);
-		$this->set('data', $data);
-		$this->layout = 'checkbase';
-	}
+	var $name = 'Orders';
+	var $uses = 'OrderItem';
 	
-	function confirm() {
-		$this->layout = 'checkbase';		
-		if (!empty($this->data)) {
-			$orders = $this->data;
-			$carts = $this->Cart->find('all', array(
-			'conditions'=>array('Cart.id'=>$this->data['Order']['cts']),
-			'recursive' => 1 ));
-			$this->set(compact('carts', 'orders'));			
-		}
-	}
-	
-	function subTotal($ids) {
-		//
+	public function recibirDatosCarrito($datosCarrito = null){
+		debug($datosCarrito);
 	}
 }
 ?>
