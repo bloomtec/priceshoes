@@ -381,16 +381,27 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `priceshoes`.`medios_de_pago`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`medios_de_pago` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`medios_de_pago` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `medio_de_pago` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `priceshoes`.`orders`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `priceshoes`.`orders` ;
 
 CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `cliente_id` INT NOT NULL ,
-  `estado_id` INT NOT NULL ,
-  `created` DATETIME NULL ,
-  `updated` DATETIME NULL ,
+  `cliente_id` INT NULL ,
+  `medio_de_pago` INT NOT NULL ,
+  `estado_id` INT NOT NULL DEFAULT 0 ,
   `envio_nombre` VARCHAR(45) NULL ,
   `envio_apellido` VARCHAR(45) NULL ,
   `envio_direccion` VARCHAR(45) NULL ,
@@ -404,9 +415,12 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
   `pago_telefono` VARCHAR(45) NULL ,
   `pago_ciudad` VARCHAR(45) NULL ,
   `pago_estado` VARCHAR(45) NULL ,
+  `created` DATETIME NULL ,
+  `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `orders_clientes1` (`cliente_id` ASC) ,
   INDEX `orders_order_states1` (`estado_id` ASC) ,
+  INDEX `orders_medios_de_pago1` (`medio_de_pago` ASC) ,
   CONSTRAINT `orders_clientes1`
     FOREIGN KEY (`cliente_id` )
     REFERENCES `priceshoes`.`clientes` (`id` )
@@ -415,6 +429,11 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
   CONSTRAINT `orders_order_states1`
     FOREIGN KEY (`estado_id` )
     REFERENCES `priceshoes`.`order_states` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `orders_medios_de_pago1`
+    FOREIGN KEY (`medio_de_pago` )
+    REFERENCES `priceshoes`.`medios_de_pago` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -483,5 +502,15 @@ INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (3, 'Enviado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (4, 'Completado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (5, 'Cancelado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (0, 'Creado');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `priceshoes`.`medios_de_pago`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `priceshoes`;
+INSERT INTO `priceshoes`.`medios_de_pago` (`id`, `medio_de_pago`) VALUES (1, 'tarjeta credito');
+INSERT INTO `priceshoes`.`medios_de_pago` (`id`, `medio_de_pago`) VALUES (2, 'tarjeta debito');
 
 COMMIT;
