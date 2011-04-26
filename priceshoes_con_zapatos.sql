@@ -482,6 +482,7 @@ INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (2, 'Pagado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (3, 'Enviado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (4, 'Completado');
 INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (5, 'Cancelado');
+INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (0, 'Creado');
 
 COMMIT;
 
