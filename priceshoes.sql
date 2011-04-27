@@ -348,11 +348,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `priceshoes`.`clientes`
+-- Table `priceshoes`.`clients`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `priceshoes`.`clientes` ;
+DROP TABLE IF EXISTS `priceshoes`.`clients` ;
 
-CREATE  TABLE IF NOT EXISTS `priceshoes`.`clientes` (
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`clients` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `genero` CHAR(1) NULL ,
   `nombre` VARCHAR(45) NULL ,
@@ -381,11 +381,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `priceshoes`.`pagar_medios`
+-- Table `priceshoes`.`payment_types`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `priceshoes`.`pagar_medios` ;
+DROP TABLE IF EXISTS `priceshoes`.`payment_types` ;
 
-CREATE  TABLE IF NOT EXISTS `priceshoes`.`pagar_medios` (
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`payment_types` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `medio_de_pago` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -423,7 +423,7 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
   INDEX `orders_medios_de_pago1` (`medio_de_pago` ASC) ,
   CONSTRAINT `orders_clientes1`
     FOREIGN KEY (`cliente_id` )
-    REFERENCES `priceshoes`.`clientes` (`id` )
+    REFERENCES `priceshoes`.`clients` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `orders_order_states1`
@@ -433,7 +433,7 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
     ON UPDATE NO ACTION,
   CONSTRAINT `orders_medios_de_pago1`
     FOREIGN KEY (`medio_de_pago` )
-    REFERENCES `priceshoes`.`pagar_medios` (`id` )
+    REFERENCES `priceshoes`.`payment_types` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -506,11 +506,11 @@ INSERT INTO `priceshoes`.`order_states` (`id`, `estado`) VALUES (0, 'Creado');
 COMMIT;
 
 -- -----------------------------------------------------
--- Data for table `priceshoes`.`pagar_medios`
+-- Data for table `priceshoes`.`payment_types`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `priceshoes`;
-INSERT INTO `priceshoes`.`pagar_medios` (`id`, `medio_de_pago`) VALUES (1, 'tarjeta credito');
-INSERT INTO `priceshoes`.`pagar_medios` (`id`, `medio_de_pago`) VALUES (2, 'tarjeta debito');
+INSERT INTO `priceshoes`.`payment_types` (`id`, `medio_de_pago`) VALUES (1, 'tarjeta credito');
+INSERT INTO `priceshoes`.`payment_types` (`id`, `medio_de_pago`) VALUES (2, 'tarjeta debito');
 
 COMMIT;
