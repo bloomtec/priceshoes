@@ -48,7 +48,14 @@ class CategoriesController extends AppController {
 			$this->Session->setFlash(__('Categoría inválida', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->paginate=array("Product"=>array("limit"=>"12"));
+		
+		$this->paginate=array("Product"=>array("limit"=>"12","joins"=>array(
+			array('table' => 'inventories',"alias"=>"Inventory","type"=>"left",'conditions' => array(
+					'Product.id=Inventory.product_id','Product.id=Product.id'
+					)
+			)
+		),"conditions"=>array("Inventory.disponible"=>true)));
+		//debug($this->paginate("Product",array("category_id"=>$id)));
 		$this->set("products",$this->paginate("Product",array("category_id"=>$id)));
 		$this->set('category', $this->Category->read(null, $id));
 	}

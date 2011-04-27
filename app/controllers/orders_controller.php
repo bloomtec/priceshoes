@@ -64,7 +64,14 @@ class OrdersController extends AppController {
 	
 	public function pagar(){
 		$this->autoRender = false;
-		debug($this->data);
+		if(!empty($this->data)){
+			if($this->Order->save($this->data)){
+				$this->Session->setFlash("Orden Confirmada");
+			} else {
+				$this->Session->setFlash("Hubo un problema al confirmar su orden");
+			}
+			$this->redirect('/');
+		}
 	}
 	
 }

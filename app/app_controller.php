@@ -10,6 +10,10 @@ class AppController extends Controller {
 	var $inventory_id;
 
 	function beforeFilter() {
+		$this->Auth->fields = array(
+		'username' => 'email',
+		'password' => 'password'
+		);
 		if(isset($this->params["prefix"])&&$this->params["prefix"]=="admin"){
 			$this->layout="admin";
 		}
@@ -17,8 +21,6 @@ class AppController extends Controller {
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
 
 		$this->Auth->loginRedirect  = array('controller'=>'users','action'=>'menu');
-		$this->Auth->allow("*");
-
 		if ((isset($this->passedArgs['category_id'])&&((int)$this -> passedArgs['category_id'] != 1))) {
 			$this -> cart_id = (int) $this -> passedArgs['category_id'];
 		} else {
