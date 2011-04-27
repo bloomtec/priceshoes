@@ -12,13 +12,18 @@
 		<div class="opciones">
 			<ul>
 				<li>
-					<a href="#">Mi cuenta</a>
+				<?php 
+					echo $html->link("Mi Cuenta",
+            			array(
+							"controller"=>"users","action"=>"login")
+						);
+				 ?>
 				</li>
 		        <li>
 		             <?php 
             	echo $html->link("Registro",
             			array(
-							"controller"=>"pages","action"=>"registro")
+							"controller"=>"users","action"=>"register")
 						);
 				?>
 		        </li>

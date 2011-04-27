@@ -62,7 +62,11 @@ class CartsController extends AppController {
 		
 		if(is_array($data) && !($data['Inventory']['disponible'] = 1)) {
 			echo false;
+			Configure::write("debug",0);
+			$this->autoRender=false;
+			exit(0);
 			return;
+			
 		}
 
 		// check if the product is already
@@ -83,7 +87,9 @@ class CartsController extends AppController {
 		// $this -> redirect( array('controller' => 'inventories', 'action' => "view/inventory_id:$this->inventory_id"));
 		
 		echo true;
-		
+		Configure::write("debug",0);
+			$this->autoRender=false;
+			exit(0);
 		return;
 	}
 	
