@@ -83,16 +83,15 @@
 		</td>
 		<td>
 			<?php
-				/*
 				echo $form -> create(null, array('url'=>'/orders/recibirDatosCarrito/'));
+				echo $form->input("Tarjeta.debito", array('label'=>'Tipo De Tarjeta ','id'=>'radioTarjeta', 'name'=>'tarjeta', 'options' => array('Credito', 'Debito')));
 				foreach($cartContents as $content){
 					$cart_id = $content['carts']['id'];
-					echo $form->hidden('Carrito-"$cart_id".inventory_id', array('value'=>$content['carts']['inventory_id']));
-					echo $form->hidden('Carrito-"$cart_id".cantidad', array('value'=>$content['carts']['cantidad']));
+					echo $form->hidden("Carrito-$cart_id.inventory_id", array('value'=>$content['carts']['inventory_id']));
+					echo $form->hidden("Carrito-$cart_id.cantidad", array('value'=>$content['carts']['cantidad']));
 				}
 				echo $form -> end('Proceder a pagar');
-				*/
-				echo $html -> link('Proceder a pagar', '/orders/recibirDatosCarrito/');
+				//echo $html -> link('Proceder a pagar', '/orders/recibirDatosCarrito/');
   			?>
   		</td>
   	</tr>
