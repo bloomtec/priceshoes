@@ -7,7 +7,7 @@ class OrdersController extends AppController {
 	private function extraerItems($datos = null){
 		$items = array();
 		
-		if(isset($datos)){			
+		if(isset($datos)){		
 			foreach ($datos as $tipoInfo=>$info){
 				$type = substr($tipoInfo, 0, 3);
 				if($type === "Car"){
@@ -61,5 +61,11 @@ class OrdersController extends AppController {
 			$this->set(array('order_id'=>$order_id));
 		}
 	}
+	
+	public function pagar(){
+		$this->autoRender = false;
+		debug($this->data);
+	}
+	
 }
 ?>

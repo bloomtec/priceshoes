@@ -25,8 +25,8 @@ datos (# tarjeta y cod verificacion; cc; datos de envio - departamento, ciudad y
 		echo $form->input("Order.pago_telefono", array('type'=>'text', 'label'=>'Teléfono'));
 		echo $form->input("Order.pago_ciudad", array('type'=>'text', 'label'=>'Ciudad'));
 		echo $form->input("Order.pago_estado", array('type'=>'text', 'label'=>'Estado'));
-		echo $form->input("Order.numero_tarjeta", array('type'=>'text', 'label'=>'Número De La Tarjeta'));
-		echo $form->input("Order.codigo_verificacion", array('type'=>'text', 'label'=>'Código De Verificación'));
+		echo $form->input("Order.tarjeta_numero", array('type'=>'text', 'label'=>'Número De La Tarjeta'));
+		echo $form->input("Order.tarjeta_codigo", array('type'=>'text', 'label'=>'Código De Verificación'));
 		echo $form->end("Confirmar");
 	?>
 </div>
