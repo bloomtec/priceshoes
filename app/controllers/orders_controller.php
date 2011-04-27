@@ -30,7 +30,7 @@ class OrdersController extends AppController {
 		}
 		return null;
 	}
-	
+
 	public function recibirDatosCarrito(){
 		$this->autoRender = false;
 		
@@ -53,7 +53,7 @@ class OrdersController extends AppController {
 			$this->OrderItem->save();
 		}
 		
-		//$this->redirect('/orders/confirmarOrden/'.$this->Order->id);
+		$this->redirect('/orders/confirmarOrden/'.$this->Order->id);
 	}
 	
 	public function confirmarOrden($order_id = null){
