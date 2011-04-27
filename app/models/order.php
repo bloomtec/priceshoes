@@ -5,16 +5,23 @@ class Order extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Client' => array(
-			'className' => 'Client',
-			'foreignKey' => 'id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'PaymentType' => array(
+			'className' => 'PaymentType',
+			'foreignKey' => 'payment_type_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
 		'OrderState' => array(
 			'className' => 'OrderState',
-			'foreignKey' => 'id',
+			'foreignKey' => 'order_state_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -24,7 +31,7 @@ class Order extends AppModel {
 	var $hasMany = array(
 		'OrderItem' => array(
 			'className' => 'OrderItem',
-			'foreignKey' => 'id',
+			'foreignKey' => 'order_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

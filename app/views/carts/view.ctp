@@ -89,7 +89,8 @@
 					echo $form->hidden("Carrito-$cart_id.inventory_id", array('value'=>$content['carts']['inventory_id']));
 					echo $form->hidden("Carrito-$cart_id.cantidad", array('value'=>$content['carts']['cantidad']));
 				}
-				echo $form->input("Tarjeta.tipo_de_tarjeta", array('type'=>'radio', 'options'=>array('Credito', 'Debito')));
+				echo $form->radio("Tarjeta.tipo_de_tarjeta", array("Credito", "Debito"), array("default"=>"Credito"));
+				//echo $form->input("Tarjeta.tipo_de_tarjeta", array('type'=>'radio', 'options'=>array('Credito', 'Debito')));
 				echo $form -> end('Proceder a pagar');
   			?>
   		</td>
