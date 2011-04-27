@@ -10,43 +10,68 @@ class UsersController extends AppController {
     function beforeFilter(){
 		parent::beforeFilter();
 		//$this->Auth->allow('init','reset','register');
-		$this->Auth->allow('login','register');
+		$this->Auth->allow('login','register',"checkEmail");
 	
 	}
 	function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		debug($this->Auth->user());
 	}
   
+	function checkEmail(){
+		$checkMail=$this->User->findByEmail($_GET["data"]["User"]["email"]);
+			if($checkMail){
+				echo json_encode(array("data[User][email]"=>"el email se encuentra registrado"));
+				Configure::write("debug",0);
+				$this->autoRender=false;
+				exit(0);
+
+			}else{
+				echo json_encode(true);
+				Configure::write("debug",0);
+				$this->autoRender=false;
+				exit(0);
+			}
+			Configure::write("debug",0);
+				$this->autorender=false;
+				exit(0);
+	}
 	function register(){
 		if (!empty($this->data)) {
+		  	$this->User->recursive = 0;		  
 			$this->User->create();
-			if ($this->User->saveAll($this->data)) {
-				$aro =& $this->Acl->Aro;
-				$newAro=array(
-					"alias"=>$this->data["User"]["username"],
-					"parent_id"=>$this->registradoRolId,
-					"foreign_key"=>$this->User->id,
-					"model"=>"User",
-				);
-				$aro->create();
-				$aro->save($newAro);
-				$this->Session->setFlash(__('The user has been saved', true));
-			//	$this->redirect(array('action' => 'index'));
+			$this->data["User"]["role_id"]=2;// Is set as a Basic user for default
+			$this->data["UserField"]["fecha_nacimiento"]=date('d/m/Y', strtotime($this->data["UserField"]["fecha_nacimiento"]));
+		  if ($this->User->saveAll($this->data,array("validate"=>false))) 
+			{
+		        $para      = $this->data['User']['email'];
+				$asunto    = 'Bienvenido a Tecnocenter';
+				$mensaje   = 'Bienvenido, sus datos de ingreso al portal Tecnocenter son los siguientes:<br> Nombre de usuario (email) :'.$this->data['User']['email'].
+							 '<br>Contraseña: '.$this->data['User']['password-repetir'];
+				 
+				$cabeceras = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+				// Cabeceras adicionales
+				$cabeceras .= 'From: Tecnocenter <info@tecnocenter.com.co>' . "\r\n";
+
+				/*if(mail($para, $asunto, $mensaje, $cabeceras))
+				{
+					$this->Session->setFlash(__('Bienvenido', true));
+				}else 
+				{
+						$this->Session->setFlash(__('Bienvenido', true));
+					//$this->Session->setFlash(__('Datos de logueo no enviados a su correo, por favor intenta mas tarde', true));
+				}*/
+			
+				//$rol=$this->Session->read("Auth.User.role_id");
+				$this->Session->setFlash(__('Su registro ha sido éxitoso', true));
+				$this->Auth->login($this->data);
+				$this->redirect(array("controller"=>"users",'action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('No se pudo completar el registro. Por favor, intente de nuevo', true));
 			}
 		}
-		//$user=$this->User->read(null,1);
-		
-		$roles = $this->User->Role->find('list');
-		$this->set(compact('roles'));
-		
-	}
-	function pruebas(){
-		debug($this->User->read(null,1));
-		
-	}
+	}	
+	
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid user', true));
@@ -283,53 +308,6 @@ class UsersController extends AppController {
 				return;
 			}
 		}	
-	}
-	function init(){
-		$aro =& $this->Acl->Aro;
-		$aco =& $this->Acl->Aco;
-		$firstAroId=$aro->id;
-		$roles=array("Administrador","Cliente");
-		foreach($roles as $theRole){
-			$role["Role"]["name"]=$theRole;
-			$this->User->Role->create();
-			if($this->User->Role->save($role)){
-				$newAro=array(
-					"alias"=>$role["Role"]["name"],
-					"model"=>"Role",
-					"foreign_key"=>$this->User->Role->id,
-					);
-				$aro->create();
-				$aro->save($newAro);
-			}
-			$this->User->Role->id=0;
-		}
-		
-		$firsAcos=array(
-			0=>array(
-				"alias"=>"admin_menu"				
-			),
-			1=>array(
-				"alias"=>"menu"	
-			)	
-		);
-		foreach($firsAcos as $newAro){
-			$aco->create();
-			$aco->save($newAro);
-		}
-		$this->Acl->allow('Administrador', 'admin_menu');
-		$this->Acl->allow('Cliente', 'menu');
-		$this->redirect($this->referer());
-	}
-  
-  
-	function reset(){
-		$this->User->query("TRUNCATE TABLE `users`");
-		$this->User->query("TRUNCATE TABLE `roles`");
-		$this->User->query("TRUNCATE TABLE `aros_acos`");
-		$this->User->query("TRUNCATE TABLE `aros`");
-		$this->User->query("TRUNCATE TABLE `acos`");
-		$this->init();
-		$this->redirect($this->referer());
 	}
 }
 ?>

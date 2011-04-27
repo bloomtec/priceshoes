@@ -111,7 +111,18 @@ $(function(){
 			});
 			e.preventDefault()
 		});
-		
+		$(".boton-favoritos").click(function(e){
+			var productTalla=$("ul.cuadros-colores li.selected").attr("rel").split("-");
+			var productID=productTalla[0];
+			$.post(server+"favorites/ajaxAdd",{product_id:productID},function(data){
+				if(data){
+					
+				}else{
+					
+				}
+			});
+			e.preventDefault()
+		});
 	}();
 })
 
@@ -120,7 +131,14 @@ $(function(){
    months: 'Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre',
    shortMonths:  'Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic',
    days:         'Domingo,Lunes,Martes,Miércoles,Jueves,Viernes,Sábado',
-   shortDays:    'Dom,Lun,Mar,Mie,Jue,Vie,Sab'
+   shortDays:    'Dom,Lun,Mar,Mie,Jue,Vie,Sab',
+   '*'			: 'Virheellinen arvo',
+	':email'  	: 'Correo electronico no valido',
+	':number' 	: 'El campo debe ser numerico',
+	':url' 		: 'El campo debe ser una URL',
+	'[max]'	 	: 'El campo debe ser mayot a $1',
+	'[min]'		: 'El campo debe ser menor a $1',
+	'[required]'	: 'Este campo es obligatorio '
    });
 
 	$(":date").dateinput({
@@ -134,15 +152,11 @@ $(function(){
 	firstDay: 1                  	// which day starts a week. 0 = sunday, 1 = monday etc..
 	
     });
-     $.tools.validator.fn("[data-equals]", "Value not equal with the $1 field", function(input) {
-		var name = input.attr("data-equals"),
-			 field = this.getInputs().filter("[name='" + name + "']"); 
-		return input.val() == field.val() ? true : [name]; 
+  $.tools.validator.fn("[data-equals]", " $1 diferentes", function(input) {
+	var name = input.attr("data-equals"),
+		 field = this.getInputs().filter("[id='" + name + "']"); 
+	return input.val() == field.val() ? true : [name]; 
 	});
-     $("#UserCrearForm").validator(
-     	
-     	
-     );
     
    
     
