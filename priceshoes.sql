@@ -49,8 +49,19 @@ DROP TABLE IF EXISTS `priceshoes`.`user_fields` ;
 CREATE  TABLE IF NOT EXISTS `priceshoes`.`user_fields` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NULL DEFAULT NULL ,
-  `nombre` VARCHAR(45) NOT NULL ,
-  `apellido` VARCHAR(45) NOT NULL ,
+  `nombres` VARCHAR(45) NOT NULL ,
+  `apellidos` VARCHAR(45) NOT NULL ,
+  `tipo_identificacion` VARCHAR(45) NULL ,
+  `identificacion` VARCHAR(45) NULL ,
+  `sexo` VARCHAR(45) NULL ,
+  `fecha_nacimiento` DATE NULL ,
+  `pais` VARCHAR(45) NULL ,
+  `departamento_residencia` VARCHAR(45) NULL ,
+  `ciudad_residencia` VARCHAR(45) NULL ,
+  `direccion` VARCHAR(45) NULL ,
+  `direccion2` VARCHAR(45) NULL ,
+  `telefono_fijo` VARCHAR(45) NULL ,
+  `telefono_movil` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `userfileds` (`user_id` ASC) ,
   CONSTRAINT `userfileds`
@@ -348,27 +359,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `priceshoes`.`clients`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `priceshoes`.`clients` ;
-
-CREATE  TABLE IF NOT EXISTS `priceshoes`.`clients` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `genero` CHAR(1) NULL ,
-  `nombre` VARCHAR(45) NULL ,
-  `apellido` VARCHAR(45) NULL ,
-  `fecha_nacimiento` DATETIME NULL ,
-  `email` VARCHAR(45) NULL ,
-  `direccion` VARCHAR(45) NULL ,
-  `telefono` VARCHAR(45) NULL ,
-  `password` VARCHAR(45) NULL ,
-  `created` DATETIME NULL ,
-  `updated` DATETIME NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `priceshoes`.`order_states`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `priceshoes`.`order_states` ;
@@ -399,43 +389,43 @@ DROP TABLE IF EXISTS `priceshoes`.`orders` ;
 
 CREATE  TABLE IF NOT EXISTS `priceshoes`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `cliente_id` INT NULL ,
-  `medio_de_pago` INT NOT NULL ,
-  `estado_id` INT NOT NULL DEFAULT 0 ,
+  `user_id` INT NULL ,
+  `payment_type_id` INT NOT NULL ,
+  `order_state_id` INT NOT NULL DEFAULT 0 ,
   `envio_nombre` VARCHAR(45) NULL ,
   `envio_apellido` VARCHAR(45) NULL ,
-  `pago_cedula` VARCHAR(45) NULL ,
   `envio_direccion` VARCHAR(45) NULL ,
   `envio_telefono` VARCHAR(45) NULL ,
   `envio_ciudad` VARCHAR(45) NULL ,
   `envio_estado` VARCHAR(45) NULL ,
   `envio_costo` DECIMAL(5,2) NULL ,
+  `tarjeta_codigo` INT(4) NULL ,
+  `tarjeta_numero` INT(16) NULL ,
   `pago_nombre` VARCHAR(45) NULL ,
   `pago_apellido` VARCHAR(45) NULL ,
   `pago_direccion` VARCHAR(45) NULL ,
+  `pago_cedula` VARCHAR(45) NULL ,
   `pago_telefono` VARCHAR(45) NULL ,
   `pago_ciudad` VARCHAR(45) NULL ,
   `pago_estado` VARCHAR(45) NULL ,
-  `tarjeta_numero` INT(16) NULL ,
-  `tarjeta_codigo` INT(4) NULL ,
   `created` DATETIME NULL ,
   `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `orders_clientes1` (`cliente_id` ASC) ,
-  INDEX `orders_order_states1` (`estado_id` ASC) ,
-  INDEX `orders_medios_de_pago1` (`medio_de_pago` ASC) ,
-  CONSTRAINT `orders_clientes1`
-    FOREIGN KEY (`cliente_id` )
-    REFERENCES `priceshoes`.`clients` (`id` )
+  INDEX `orders_users1` (`user_id` ASC) ,
+  INDEX `orders_order_states1` (`order_state_id` ASC) ,
+  INDEX `orders_payment_types1` (`payment_type_id` ASC) ,
+  CONSTRAINT `orders_users1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `priceshoes`.`users` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `orders_order_states1`
-    FOREIGN KEY (`estado_id` )
+    FOREIGN KEY (`order_state_id` )
     REFERENCES `priceshoes`.`order_states` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `orders_medios_de_pago1`
-    FOREIGN KEY (`medio_de_pago` )
+  CONSTRAINT `orders_payment_types1`
+    FOREIGN KEY (`payment_type_id` )
     REFERENCES `priceshoes`.`payment_types` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -465,6 +455,32 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`order_items` (
   CONSTRAINT `order_items_orders1`
     FOREIGN KEY (`order_id` )
     REFERENCES `priceshoes`.`orders` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `priceshoes`.`favorites`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `priceshoes`.`favorites` ;
+
+CREATE  TABLE IF NOT EXISTS `priceshoes`.`favorites` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `product_id` INT NULL ,
+  `user_id` INT NULL ,
+  `created` DATETIME NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `favoritodelusuario` (`user_id` ASC) ,
+  INDEX `productofavorito` (`product_id` ASC) ,
+  CONSTRAINT `favoritodelusuario`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `priceshoes`.`users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `productofavorito`
+    FOREIGN KEY (`product_id` )
+    REFERENCES `priceshoes`.`products` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
