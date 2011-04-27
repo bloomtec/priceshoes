@@ -97,7 +97,7 @@ $(function(){
 		
 	}();
 	var carrito=function(){
-		$(".boton-carrito").click(function(){
+		$(".boton-carrito").click(function(e){
 			var productTalla=$("ul.cuadros-colores li.selected").attr("rel").split("-");
 			var productID=productTalla[0];
 			var colorID=productTalla[1];
@@ -109,7 +109,7 @@ $(function(){
 					
 				}
 			});
-			return false;
+			e.preventDefault()
 		});
 		
 	}();

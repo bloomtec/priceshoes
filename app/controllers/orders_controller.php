@@ -2,8 +2,10 @@
 class OrdersController extends AppController {
 
 	var $name = 'Orders';
-	var $uses = array('OrderItem', 'Order');
-	
+	var $uses = array('Order','OrderItem' );
+	function index(){
+		
+	}
 	public function recibirDatosCarrito(){
 		$this->autoRender = false;
 		
