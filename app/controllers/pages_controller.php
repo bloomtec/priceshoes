@@ -17,7 +17,9 @@ function beforeFilter(){
 		$this->set("homeID",$slug);
 	}
 
-	
+	function home(){
+		$this->layout="home";
+	}
 
 	
 	function admin_index() {
@@ -64,7 +66,23 @@ function beforeFilter(){
 		}
 	}
 	function contacto(){
-		
+		if(!empty($this->data)){
+				$asunto    = 'Contacto Página Web';
+				$mensaje= "nombre: ".$this->data["Page"]["nombre_contacto"]. "<br />";
+				$mensaje.= "email: ".$this->data["Page"]["email"]. "<br />";
+				$mensaje.= "telefono: ".$this->data["Page"]["telefono"]. "<br />";
+				$mensaje.= "comentarios: ".$this->data["Page"]["comentario"]."<br />";
+				
+				$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+				$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+				$para="ricardopandales@gmail.com";
+				$cabeceras .= 'From: Tecnocenter <info@tecnocenter.com.co>' . "\r\n";
+				if(mail($para, $asunto, $mensaje, $cabeceras)){
+					$this->set("mensaje",'Datos enviados a su correo');
+				}else {
+					$this->set("mensaje",'Datos no enviados a su correo, por favor intenta mas tarde');
+				}
+		}		
 	}
 	function registro(){
 		

@@ -35,7 +35,7 @@ class ProductsController extends AppController {
 	}
 	
 	function search(){
-			$this->set("products",$this->paginate("Product",array("Product.nombre like"=>"%".$this->data["Product"]["query"]."%")));
+			$this->set("products",$this->paginate("Product",array("Product.nombre like"=>"%".$this->data["Product"]["search"]."%")));
 	}
 	function promocionados(){
 		$this->Product->recursive=-1;	
@@ -61,6 +61,7 @@ class ProductsController extends AppController {
 		return $masVendidos[$seleccionado];
 	}
 	function view($id = null) {
+		$this->layout="virtual";
 		if (!$id) {
 			$this->Session->setFlash(__('Producto inválido', true));
 			$this->redirect(array('action' => 'index'));

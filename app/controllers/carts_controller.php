@@ -118,8 +118,11 @@ class CartsController extends AppController {
 	}
 	function ajaxRemove() {
 		$this -> Cart -> emptyBasket($_POST["cart_id"]);
-		
-		
+		echo true;
+		Configure::write("debug",0);
+		$this->autoRender=false;
+		exit(0);
+		return;
 		
 	}
 

@@ -21,16 +21,15 @@
 	<h3>Mi Cuenta</h3>
 		<ul>
 			<li>
-				<a href="#">Registro</a>
+				<?php echo $html->link("Registro",array("controller"=>"users","action"=>"register"))?>
+				
 			</li>
 			<li>
-				<a href="#">Ver Carrito</a>
+				<?php echo $html->link("Ver Carrito",array("controller"=>"carts","action"=>"view"))?>
 			</li>
+			
 			<li>
-				<a href="#">Favoritos</a>
-			</li>
-			<li>
-				<a href="#">Ayuda</a>
+				<?php echo $html->link("Ayuda",array("controller"=>"pages","action"=>"view","ayuda"))?>
 			</li>
 		</ul>	
 </div>
@@ -41,26 +40,28 @@
 <div id="footer_links">
 	<ul>
 		<li>
-			<a href="#">Acerca de</a>
+			<?php echo $html->link("Acerca de",array("controller"=>"pages","action"=>"view","acerca-de"))?>
 		</li>
 		<li>
-			<a href="#">Nuestras Tiendas</a>
+			<?php echo $html->link("Nuestras Tiendas",array("controller"=>"pages","action"=>"view","nuestras-tiendas"))?>
 		</li>
 		<li>
-			<a href="#">Tendencias</a>
+			<?php echo $html->link("Tendencias",array("controller"=>"pages","action"=>"view","tendencias"))?>
 		</li>
 		<li>
-			<a href="#">Tienda Virtual</a>
+			<?php echo $html->link("Tienda Virtual","/tienda-virtual")?>
 		</li>
 		<li>
-			<a href="#">Franquincias</a>
+			<?php echo $html->link("Franquicias",array("controller"=>"pages","action"=>"view","franquicias"))?>
 		</li>
 		<li>
-			<a href="#">Contacto</a>
+			<?php echo $html->link("Contacto",array("controller"=>"pages","action"=>"contacto"))?>
 		</li>
+		<!--
 		<li>
 			<a href="#">Mapa del sitio</a>
 		</li>
+		-->
 	</ul>
 	<h4>© 2011 PriceShoes Online Store. Todos los derechos Reservados.</h4>
 </div>

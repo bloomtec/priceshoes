@@ -32,6 +32,8 @@
 				<div style="clear:left"></div>
 			    </li>
 				<li>
+				<script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script>
+				<fb:send href="<?php echo $_SERVER['SERVER_NAME'].$html->url(array("controller"=>"products","action"=>"view",$product['Product']['id']));?>" font=""></fb:send>
 				<?php echo $this->Html->link("Compartir en facebook",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-facebook')); ?>
 			    <div style="clear:left"></div>
 			    </li>

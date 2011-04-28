@@ -67,7 +67,22 @@ class User extends AppModel {
             'conditions'   => '',
             'dependent'    => true
         )
-    );  
+    );
+	var $hasMany = array(
+		'Favorite' => array(
+			'className' => 'Favorite',
+			'foreignKey' => 'user_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);  
 
 
 

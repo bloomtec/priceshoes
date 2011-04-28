@@ -1,21 +1,14 @@
-<div id="left-content">
-	 <?php echo $this->element("virtual");?>
-	 <?php echo $this->element("social");?>
-	
-</div>
-
-<div id="right-content" class="mi-cuenta">
-<?php $userField["UserField"]=$user["UserField"]?>
-	<ul class="userMenu">
-		<li><?php echo $html->link("Modificar Datos",array("action"=>"edit")) ?></li>
-	<li><?php echo $html->link("Cambiar contraseña",array("action"=>"cambiarContrasena")) ?></li>
-	</ul>
-	<div class="user-info">
-		<dl><?php $i = 0; $class = ' class="altrow"';?>
-		
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Email'); ?></dt>
+<div class="userFields view">
+<h2><?php  __('User Field');?></h2>
+	<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($user['User']['email'], array('controller' => 'users', 'action' => 'view', $user['User']['id'])); ?>
+			<?php echo $userField['UserField']['id']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('User'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $this->Html->link($userField['User']['email'], array('controller' => 'users', 'action' => 'view', $userField['User']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nombres'); ?></dt>
@@ -84,40 +77,15 @@
 			&nbsp;
 		</dd>
 	</dl>
-	</div>
-	<div class="favoritos">
-	<h2><?php __('Favoritos');?></h2>
-		<table cellpadding="0" cellspacing="0">
-		<tr>
-	
-				<th>Producto</th>
-				<th></th>
-				<th>Acciones</th>
-	
-			
-		</tr>
-		<?php
-		$i = 0;
-		foreach ($favorites as $favorite):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			
-			<td>
-				<?php echo $this->Html->link($favorite['Product']['nombre'], array('controller' => 'products', 'action' => 'view', $favorite['Product']['id'])); ?>
-			</td>
-			<td>
-				<?php echo $this->Html->image("uploads/200x200/".$favorite['Product']['imagen'],array("width"=>"100")); ?>
-			</td>
-			<td>
-			</td>
-			
-		</tr>
-	<?php endforeach; ?>
-		</table>
-	</div>
-
+</div>
+<div class="actions">
+	<h3><?php __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Edit User Field', true), array('action' => 'edit', $userField['UserField']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete User Field', true), array('action' => 'delete', $userField['UserField']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $userField['UserField']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List User Fields', true), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User Field', true), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
+	</ul>
 </div>

@@ -44,10 +44,13 @@
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
-			<?php //echo $this->element("contenido");?>			
+				
 		</div>
-		<div id="footer">
-		   <?php echo $this->element("footer");?>
+		
+	</div>
+	<div id="footer">
+		<div class="wrap">
+		<?php echo $this->element("footer");?>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

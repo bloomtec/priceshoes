@@ -1,7 +1,7 @@
 <div id="header">
-	<h1><?php echo $this->Html->link("Priceshoes",array("controller"=>"categories","action"=>"index")) ?></h1>
+	<h1><?php echo $this->Html->link("Priceshoes",array("controller"=>"pages","action"=>"home")) ?></h1>
 		<div id="buscar">
-			<?php echo $form->create("Search",array("action"=>"search","controller"=>"searchs"));?>
+			<?php echo $form->create("Product",array("action"=>"search","controller"=>"products"));?>
 	            <fieldset>
 	              <?php echo $form->input("search",array("label"=>""), array('div' => false));?>
 	              <?php echo $form->submit(__('Buscar', true), array('div' => false));?>   
@@ -32,28 +32,23 @@
 		<div id="main-nav">
 	          <ul>
 	          	<li>
-	               <a href="#">Acerca de</a>
+	              <?php echo $html->link("Acerca de",array("controller"=>"pages","action"=>"view","acerca-de"))?>
 	            </li>
 	            <li>
-	               <a href="#">Nuestras tiendas</a>
+	               <?php echo $html->link("Nuestras Tiendas",array("controller"=>"pages","action"=>"view","nuestras-tiendas"))?>
 	            </li>
 	            <li>
-	               <a href="#">Tendencias</a>
+	               <?php echo $html->link("Tendencias",array("controller"=>"pages","action"=>"view","tendencias"))?>
 	            </li>
 	            <li>
-	               <a href="#">Tienda virtual</a>
+	               <?php echo $html->link("Tienda Virtual","/tienda-virtual")?>
 	            </li>
-	            <li>
-	               <a href="#">Franquincias</a>
-	            </li>
-	            <li>
-	               <?php 
-            	echo $html->link("Contacto",
-            			array(
-							"controller"=>"pages","action"=>"contacto")
-						);
-				?>
-	            </li>
+	           	<li>
+				<?php echo $html->link("Franquicias",array("controller"=>"pages","action"=>"view","franquicias"))?>
+				</li>
+				<li>
+				<?php echo $html->link("Contacto",array("controller"=>"pages","action"=>"contacto"))?>
+				</li>
 	          </ul>
 	    </div>
 	<div style="clear:both"></div>    

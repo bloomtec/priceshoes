@@ -14,7 +14,9 @@ class UsersController extends AppController {
 	
 	}
 	function index() {
-		debug($this->Auth->user());
+		$favorites=$this->User->Favorite->find("all",array("conditions"=>array("user_id"=>$this->Auth->user("id"))));
+		$user=$this->User->read(null,$this->Auth->user("id"));
+		$this->set(compact("favorites","user"));
 	}
   
 	function checkEmail(){
@@ -81,13 +83,14 @@ class UsersController extends AppController {
 	}
 
 	
-	function edit($id = null) {
+	function edit() {
+		$id=$this->Auth->user("id");
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid user', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			if ($this->User->save($this->data)) {
+			if ($this->User->saveAll($this->data,array("validate"=>false))) {
 				$this->Session->setFlash(__('The user has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -100,6 +103,26 @@ class UsersController extends AppController {
 		$roles = $this->User->Role->find('list');
 		$this->set(compact('roles'));
 	}
+	function checkPassword(){
+		$this->User->recursive=0;
+		$user=$this->User->read(null,$this->Auth->user("id"));
+		if($user["User"]["password"]==$this->Auth->password($_GET["data"]["User"]["actualPassword"])){
+			$user["User"]["password"]=$this->Auth->password($_GET["data"]["User"]["password"]);
+			$this->User->save($user,array("validate"=>false));
+			$this->Session->setFlash(__('Se ha modificado su contraseña', true));
+			echo json_encode(true);
+		}else{
+			echo json_encode(array("data[User][actualPassword]"=>"Contraseña Actual no valida"));
+		}
+		Configure::write("debug",0);
+		$this->autoRender=false;
+		exit(0);
+	}
+  	function cambiarContrasena(){
+  		if(!empty($this->data)){
+  			
+  		}
+  	}
 	function menu(){
 		if(!$this->Acl->check(array('model' => 'User', 'foreign_key' => $this->Session->read("Auth.User.id")), 'menu')){
 			$this->Session->setFlash(__($this->Auth->authError, true));
@@ -194,6 +217,9 @@ class UsersController extends AppController {
 	//LOGIN USER
 	function login(){
 		$this->set("login",true);
+		if($this->Auth->user("id")){
+			$this->redirect(array('action' => 'index'));
+		}
 		
 	}
 	function admin_login(){

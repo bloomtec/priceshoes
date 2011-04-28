@@ -1,5 +1,5 @@
 <div id="contacto">
-	<?php echo $form->create("contacto",array("action"=>"contactenos","controller"=>"users"));?>
+	<?php echo $form->create("Page",array("action"=>"contacto","controller"=>"pages"));?>
 	<fieldset>
 		<legend>
 			Formulario de contacto

@@ -117,7 +117,7 @@ $(function(){
 			var productID=productTalla[0];
 			$.post(server+"favorites/ajaxAdd",{product_id:productID},function(data){
 				if(data){
-					$(".add-favorite").fadeIn().delay(1000).fadeOut();
+					$(".add-confirm").fadeIn().delay(1000).fadeOut();
 				}else{
 					
 				}

@@ -39,11 +39,13 @@ class CategoriesController extends AppController {
 		return $categories;
 	}
 	function index() {
+		$this->layout="virtual";
 		$this->Category->recursive = 0;
 		$this->set('categories', $this->paginate());
 	}
 
 	function view($id = null) {
+		$this->layout="virtual";
 		if (!$id) {
 			$this->Session->setFlash(__('Categoría inválida', true));
 			$this->redirect(array('action' => 'index'));

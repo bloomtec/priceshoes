@@ -565,6 +565,10 @@ form .submit input[type=submit]:hover {
   	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
   	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
+#home #virtual{
+	margin-bottom:18px;
+}
+
 
 #virtual p {
 	margin-top:14px;
@@ -700,7 +704,9 @@ form .submit input[type=submit]:hover {
 	min-height: 880px;
 	margin-left:20px;
 }
-
+#home #right-content{
+	min-height: 510px;
+}
 /** End Sondeo Contenido **/
 
 
@@ -1576,14 +1582,14 @@ ul.cuadros-tallas li{
     margin-bottom:20px;
 }
 
-#contacto #contactoComentario{
+#contacto #PageComentario{
 	width: 100%;
 	border:0;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 }
 
-#contacto #contactoTelefono{
+#contacto #PageTelefono{
    width: 163px;
 }
 
@@ -1961,7 +1967,7 @@ ul.cuadros-tallas li{
 	-moz-box-shadow:0 0 6px #ddd;
 	-webkit-box-shadow:0 0 6px #ddd;
 }
-.add-favorite, .add-cart{
+.add-confirm, .add-cart{
 	clear:left;
 	font-size:10px;
 	display: none;
