@@ -136,7 +136,24 @@ $(function(){
 			e.preventDefault()
 		});
 	}();
-})
+	var sondeo=function(){
+		$("#sondeo li span").click(function(){
+			var activo=$(this);
+			$("#sondeo li span").removeClass("activo");
+			activo.addClass("activo");
+						
+		});
+		$("#sondeo .votar").click(function(){
+			$.post(server+"surveys/voting",{optionId:$("#sondeo span.activo").attr("rel")},function(data){
+				if(data){
+					$("#sondeo .wrapper").fadeOut("slow",function(){
+						$("#sondeo .mensaje").fadeIn();
+					});
+				}
+			});
+		});
+	}();
+});
 
 $(function(){
 	$.tools.dateinput.localize("es",  {

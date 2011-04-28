@@ -559,7 +559,6 @@ form .submit input[type=submit]:hover {
 	width: 270px;
 	height: 245px;
 	margin-bottom:10px;
-	float:left;
 	background: url("../img/IMAGEN-HOME-3.jpg") no-repeat;
 	-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
   	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
@@ -571,11 +570,10 @@ form .submit input[type=submit]:hover {
 
 
 #virtual p {
-	margin-top:14px;
-	margin-left:18px;
+	padding-top:14px;
+	padding-left:18px;
 	font-size: 21px;
 	width: 171px;
-	float:left;
 	}
 
 #virtual a {
@@ -586,7 +584,7 @@ form .submit input[type=submit]:hover {
 #social{
 	width: 270px;
 	height: 245px;
-	float:left;
+	margin-bottom: 10px;
 	background: url("../img/IMAGEN-HOME-4.jpg") no-repeat;
 	-webkit-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
   	-moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
@@ -1757,14 +1755,14 @@ ul.cuadros-tallas li{
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	width: 350px;
-	float:left;
-	margin-bottom: 10px;
+
+	margin: 10px 0;
 	height: 30px;
 }
 
 #crear-usuario label{
 	font-size: 14px;
-	float:left;
+	display: block;
 	margin-bottom:10px;
 	
 }
@@ -1971,4 +1969,52 @@ ul.cuadros-tallas li{
 	clear:left;
 	font-size:10px;
 	display: none;
+}
+
+/*SONDEO*/
+#sondeo .wrapper, #sondeo .mensaje{
+	padding-left:20px;
+	padding-top:30px;
+	color:white;
+}
+#sondeo .mensaje{
+	display:none;
+}
+#sondeo h3{
+	color:#E62B7C;
+	font-size:110%;
+	margin-bottom:20px;
+}
+#sondeo ul{
+	color:white;
+}
+#sondeo li{
+	margin-bottom:7px;
+	height:34px;
+	clear:both;
+	line-height: 34px;
+	vertical-align: middle;
+}
+#sondeo li span{
+	background:url("../img/checkbox_inactivo.png");
+	display:block;
+	float:left;
+	width:34px;
+	height:34px;
+	margin-right:10px;
+	cursor: pointer;
+	
+}
+#sondeo li span.activo{
+		background:url("../img/checkbox_activo.png");
+
+}
+.votar{
+	background: #E62B7C;
+	color:white;
+	font-size:110%;
+	float:right;
+	padding:5px;
+	margin-right: 10px;	
+	cursor: pointer;
 }

@@ -14,7 +14,7 @@ function beforeFilter(){
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('page', $this->Page->findBySlug($slug));
-		$this->set("homeID",$slug);
+
 	}
 
 	function home(){
@@ -53,8 +53,8 @@ function beforeFilter(){
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			$this->data["Page"]["content"]=$_POST["editor"];
 			if ($this->Page->save($this->data)) {
-				parent::saveAudit("Service","Modificar", $this->data["Page"]["id"]);
 				$this->Session->setFlash(__('La página se ha actualizado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {

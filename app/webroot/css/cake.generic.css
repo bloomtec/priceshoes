@@ -747,3 +747,9 @@ ul {
 .disponibilidad .inactivo{
   background: url("../img/inactivo.png");
 }
+/** SONDEOS*/
+form .layer{
+ width:40%;
+ float:left;
+ clear:none;		
+}

@@ -11,12 +11,8 @@
 
 	?>
 	</fieldset>
-<?php echo $this->Form->end();?>
-	<div class="botones">
-		<?php echo $form->button("",array("class"=>"atras","url"=>$html->url(array("action"=>"index"))));?>
-		<?php echo $form->button("",array("class"=>"limpiar"));?>
-		<?php echo $form->button("",array("class"=>"guardar"));?>
-	</div>
+<?php echo $this->Form->end("Guardar");?>
+	
 </div>
 
 <script type="text/javascript">

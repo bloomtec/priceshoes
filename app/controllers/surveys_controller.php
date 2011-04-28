@@ -7,7 +7,13 @@ class SurveysController extends AppController {
 		$this->Survey->recursive = 0;
 		$this->set('surveys', $this->paginate());
 	}
-
+	function sondeo(){
+		return $oldActiva=$this->Survey->find("first",array(
+						"conditions"=>array(
+							"Survey.estado"=>true,
+						)
+					));
+	}
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid survey', true));
@@ -59,7 +65,7 @@ class SurveysController extends AppController {
 						)
 					));
 					$oldActiva["Survey"]["estado"]=false;
-					$this->Survey->save($oldActiva);
+					if(isset($oldActiva["Survey"]["id"])&&$surveyId!=$oldActiva["Survey"]["id"])$this->Survey->save($oldActiva);
 				}
 				foreach($this->data["Options"] as $option){
 					$surveyOption["SurveyOption"]["survey_id"]=$surveyId;

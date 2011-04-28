@@ -5,16 +5,16 @@
 </div>
 
 <div id="right-content" class="cambiar-contrasena">
-	<div id="UserRegisterForm" class="cambiar form">
+	<div id="crear-usuario" class="cambiar form">
 	<?php echo $this->Form->create('User');?>
 		<fieldset>
 			<p>
 			Por favor ingrese su actual contraseña y su contraseña anterior
 			</p>
 		<?php
-			echo $this->Form->input('actualPassword', array('label'=>'Contrasena Actual',"required"=>"required","div"=>"input required","type"=>"password"));
+			echo $this->Form->input('actualPassword', array('label'=>'Contrasena Actual',"required"=>"required","div"=>"forma-linea required","type"=>"password"));
 			echo $this->Form->input('password', array('label'=>'Contraseña Nueva',"required"=>"required","id"=>"Contraseñas"));  
-	echo $this->Form->input('password2', array('label'=>'Confirmar contraseña',"div"=>"required input","required"=>"required","data-equals"=>"Contraseñas","type"=>"password","data-message"=>"Por favor verifique este campo"));    
+	echo $this->Form->input('password2', array('label'=>'Confirmar contraseña',"div"=>"required forma-linea","required"=>"required","data-equals"=>"Contraseñas","type"=>"password","data-message"=>"Por favor verifique este campo"));    
 		?>
 		</fieldset>
 		<?php echo $this->Form->end(__('Enviar', true));?>
@@ -24,7 +24,7 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	$("form").validator({lang: 'es'}).submit(function(e){
+	$("form").validator({lang: 'es','position':'bottom right'}).submit(function(e){
 		var form = $(this);
 		if (!e.isDefaultPrevented()) {
 	
@@ -35,7 +35,7 @@ $(function(){
 				if (json === true)  {
 					//form.load(form.attr("action"));
 					
-				location.href=server+"users/view/<?php echo $session->read("Auth.User.id");?>";
+				location.href=server+"users/index/";
 	
 				// server-side validation failed. use invalidate() to show errors
 				} else {

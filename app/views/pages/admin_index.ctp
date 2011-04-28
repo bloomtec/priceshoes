@@ -6,7 +6,6 @@
 			<th><?php echo $this->Paginator->sort('Título','title');?></th>
 			<th><?php echo $this->Paginator->sort('Descripción','description');?></th>
 			<th><?php echo $this->Paginator->sort('slug');?></th>
-			<th><?php echo $this->Paginator->sort('Orden','order');?></th>
 			<th><?php echo $this->Paginator->sort('Creada','created');?></th>
 			<th><?php echo $this->Paginator->sort('Modificada','updated');?></th>
 			<th class="actions"><?php __('Acciones');?></th>
@@ -24,7 +23,6 @@
 		<td><?php echo $page['Page']['title']; ?>&nbsp;</td>
 		<td><?php echo $page['Page']['description']; ?>&nbsp;</td>
 		<td><?php echo $page['Page']['slug']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['order']; ?>&nbsp;</td>
 		<td><?php echo $page['Page']['created']; ?>&nbsp;</td>
 		<td><?php echo $page['Page']['updated']; ?>&nbsp;</td>
 		<td class="actions_icons">
