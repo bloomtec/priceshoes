@@ -11,7 +11,7 @@
 		</div>
 		<div class="registro-derecha">
 			<h2>Clientes PriceShoes</h2>
-			<?php echo $form->create("usurio",array("action"=>"login","controller"=>"users"));?>
+			<?php echo $form->create("User",array("action"=>"login","controller"=>"users"));?>
 			<p>Sí ya dispone de una cuenta con nosotros por favor ingrese sus datos.</p>
 				<?php echo $form->input("email",array('div' => 'email-login',"label"=>"Dirección E-mail"));?>
 				<?php echo $form->input("password",array('div' => 'password-login',"label"=>"Contraseña"));?>

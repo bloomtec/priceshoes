@@ -5,7 +5,9 @@ class CartsController extends AppController {
 
 	function index() {
 	}
-
+	function cesta(){
+		$this->layout="ajax";
+	}
 	function checkout() {
 		$this -> set('cartContents', $this -> getMiniCart());
 	}
@@ -113,6 +115,12 @@ class CartsController extends AppController {
 		} else {
 			$this -> redirect( array('controller' => 'inventories', 'action' => 'index'));
 		} */
+	}
+	function ajaxRemove() {
+		$this -> Cart -> emptyBasket($_POST["cart_id"]);
+		
+		
+		
 	}
 
 	function updates() {

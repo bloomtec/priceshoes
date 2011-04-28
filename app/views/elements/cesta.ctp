@@ -16,7 +16,7 @@
 		$subTotal += $cartContent['products']['precio'] * $cartContent['carts']['cantidad'];
 	?>
 	<tr>
-		<td>
+		<td width="20%">
 			<?php
 				echo $html -> link(
 					$html->image(
@@ -27,15 +27,15 @@
 				);
 			?>
 		</td>
-		<td style="vertical-align:middle">
+		<td width="60%" style="vertical-align:middle; text-align: center;">
 			<?php echo $html->link($cartContent['products']['nombre'], '/products/view/'.$cartContent['products']['id']);?>
 		</br>
 			<?php echo $cartContent['carts']['cantidad']; ?> x <?php echo '$' . $cartContent['products']['precio']; ?>
 		</td>
-		<td width="30%" align="right">
+		<td width="20%" style="vertical-align:middle; text-align: center;">
 			<!-- <?php Configure::read('Shop.currency');?><?php echo '$' . $cartContent['products']['precio'] * $cartContent['carts']['cantidad'];?> -->
-			<?php echo $html->link('Añadir otro par', '/carts/add/inventory_id:'.$cartContent['inventories']['id'].'category_id:'.$cartContent['categories']['id']);?>
-			<?php echo $html->link('Quitar este item', '/carts/remove/cart_id:'.$cartContent['carts']['id']);?>
+			<?php //echo $html->link('Añadir otro par', '/carts/add/inventory_id:'.$cartContent['inventories']['id'].'category_id:'.$cartContent['categories']['id']);?>
+			<?php echo $html->link('Quitar', '/carts/remove/cart_id:'.$cartContent['carts']['id'],array("rel"=>$cartContent['carts']['id'],"class"=>"removeFromCart"));?>
 		</td>
 	</tr>
 	<?php

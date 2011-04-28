@@ -104,7 +104,8 @@ $(function(){
 			var tallaID=$("ul.cuadros-tallas li.selected").attr("rel");
 			$.post(server+"carts/ajaxAdd",{product_id:productID,color_id:colorID,talla_id:tallaID},function(data){
 				if(data){
-					
+					$(".add-cart").fadeIn().delay(1000).fadeOut();
+					$("#cesta").load(server+"/carts/cesta");
 				}else{
 					
 				}
@@ -116,7 +117,18 @@ $(function(){
 			var productID=productTalla[0];
 			$.post(server+"favorites/ajaxAdd",{product_id:productID},function(data){
 				if(data){
+					$(".add-favorite").fadeIn().delay(1000).fadeOut();
+				}else{
 					
+				}
+			});
+			e.preventDefault();
+		});
+		$(".removeFromCart").live("click",function(e){
+			var cartID=$(this).attr("rel");
+			$.post(server+"carts/ajaxRemove",{cart_id:cartID},function(data){
+				if(data){
+					$("#cesta").load(server+"/carts/cesta");
 				}else{
 					
 				}

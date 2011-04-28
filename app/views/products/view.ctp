@@ -6,7 +6,7 @@
 </div>
 <div id="right-content-virtual">
 	<div class="descripcion-categoria">
-		<h2><?php echo $product['Category']['nombre']?></h2>
+		<h2><?php echo $html->link($product['Category']['nombre'],array("controller"=>"categories","action"=>"view",$product['Category']['id']))?></h2>
 		<p><?php echo ($product['Category']['descripcion'])?></p>
 	</div>
 	 <div id="producto-showcase">
@@ -17,13 +17,19 @@
 			<ul class="botones-caracteristicas">
 				<?php if($session->read("Auth.User.id")):?>
 				<li>
-				<?php echo $this->Html->link("Añadir a favoritos",array('controller' => 'favorites', 'action' => 'addToFavorite', $product['Category']['id']),array('class'=>'boton-favoritos')); ?>
-			    <div style="clear:left"></div>
+					<?php echo $this->Html->link("Añadir a favoritos",array('controller' => 'favorites', 'action' => 'addToFavorite', $product['Category']['id']),array('class'=>'boton-favoritos')); ?>
+			   		<div class="add-confirm">
+						producto añadido a favoritos
+					</div>
+				<div style="clear:left"></div>
 			    <?php endif;?>
 				</li>
 				<li>
 				<?php echo $this->Html->link("Añadir al carrito",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-carrito')); ?>
-			    <div style="clear:left"></div>
+			    	<div class="add-cart">
+						producto añadido al carrito
+					</div>
+				<div style="clear:left"></div>
 			    </li>
 				<li>
 				<?php echo $this->Html->link("Compartir en facebook",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-facebook')); ?>

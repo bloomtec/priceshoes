@@ -1202,11 +1202,11 @@ form .submit input[type=submit]:hover {
 	border: 1px solid #fff;
 }
 
-#right-content-virtual .descripcion-categoria h2{
+#right-content-virtual .descripcion-categoria h2 a,#right-content-virtual .descripcion-categoria h2 {
 	text-transform:uppercase;
 	color: #E62B7C;
 	font-weight: normal;
-	margin-left:14px;
+	margin-left:7px;
 	margin-top:12px;
 }
 
@@ -1883,6 +1883,9 @@ ul.cuadros-tallas li{
 	margin-bottom: 20px;
 }
 
+#cesta table tr td {
+	padding: 2px 0;
+}
 #cesta .titulo{
 	background: url("../img/trama-encuesta.png") repeat-x;
 	text-align:center;
@@ -1958,4 +1961,8 @@ ul.cuadros-tallas li{
 	-moz-box-shadow:0 0 6px #ddd;
 	-webkit-box-shadow:0 0 6px #ddd;
 }
-	
+.add-favorite, .add-cart{
+	clear:left;
+	font-size:10px;
+	display: none;
+}

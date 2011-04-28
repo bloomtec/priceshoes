@@ -17,10 +17,11 @@ class AppController extends Controller {
 		if(isset($this->params["prefix"])&&$this->params["prefix"]=="admin"){
 			$this->layout="admin";
 		}
-
+		$this->Auth->allow("*"); 
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
-
 		$this->Auth->loginRedirect  = array('controller'=>'users','action'=>'index');
+		
+		
 		if ((isset($this->passedArgs['category_id'])&&((int)$this -> passedArgs['category_id'] != 1))) {
 			$this -> cart_id = (int) $this -> passedArgs['category_id'];
 		} else {
