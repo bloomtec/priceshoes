@@ -3,7 +3,7 @@ class User extends AppModel {
 	var $name = 'User';
 	var $displayField = 'email';
 	var $validate = array(
-		'username' => array(
+		/*'username' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -20,7 +20,7 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
