@@ -2,7 +2,7 @@
 
 class AppController extends Controller {
 
-	var $components = array("Acl","Session", "Auth", "RequestHandler");
+	var $components = array("Acl","Session", "Auth", "RequestHandler","Cookie");
 	var $uses = array("Inventory", "Cart");
 	var $helpers = array("Form", "Html", "Session", "Javascript");
 	var $session_id;
@@ -39,6 +39,14 @@ class AppController extends Controller {
 		$this -> set('category_id', $this->category_id);
 		$this -> set('inventory_id', $this->inventory_id);
 		$this -> set('session_id', $this->session_id);
+		$this->Cookie->name = 'PriceShoes';
+		$this->Cookie->time = '10 Days'; // or '1 hour'
+		$this->Cookie->path = '/';
+		   // $this->Cookie->domain = 'priceshoes.com';
+		$this->Cookie->domain = 'localhost';
+		$this->Cookie->secure = false; //i.e. only sent if using secure HTTPS
+		$this->Cookie->key = 'qSI232qs*&sXOw!';
+			//$this->Auth->allow('init','reset','register');
 	}
 
 	function beforeRender() {

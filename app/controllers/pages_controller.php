@@ -16,6 +16,10 @@ function beforeFilter(){
 		$this->set('page', $this->Page->findBySlug($slug));
 
 	}
+	function bannerPromocional(){
+		$banner=$this->Page->findByTitle("banner");
+		return $banner["Page"]["content"];
+	}
 
 	function home(){
 		$this->layout="home";

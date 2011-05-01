@@ -7,6 +7,11 @@ class ProductsController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->allow("index","view","promocionados","novedad","news","search");
 	}
+	function getRef($productId){
+		$this->Product->recursive=0;
+		$product=$this->Product->read(null,$productId);
+		return $product["Product"]["referencia"];
+	}
 	function getColores($id){
 		/**
 		 * Devueve un array con los colores y las tallas disponibles de un determinado produto

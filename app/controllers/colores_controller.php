@@ -7,7 +7,11 @@ class ColoresController extends AppController {
 		$this->Color->recursive = 0;
 		$this->set('colores', $this->paginate());
 	}
-
+	function getNombre($colorId){
+		$this->Color->recursive=0;
+		$colore=$this->Color->read(null,$colorId);
+		return $colore["Color"]["nombre"];
+	}
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Color inválido', true));

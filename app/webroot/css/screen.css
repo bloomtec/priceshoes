@@ -670,11 +670,11 @@ form .submit input[type=submit]:hover {
 
 
 
-#sondeo{
+#sondeo, #misfavoritos, #cesta{
 	background: url("../img/trama-footer.png") repeat;
 	float:left;
 	width: 100%;
-	min-height:354px;
+	height:354px;
 }
 
 .home_sondeo #sondeo{
@@ -699,7 +699,8 @@ form .submit input[type=submit]:hover {
 	background: url("../img/trama-footer.png") repeat;
 	float:left;
 	width: 670px;
-	min-height: 880px;
+	min-height: 864px;
+	max-height: 864px;
 	margin-left:20px;
 }
 #home #right-content{
@@ -978,7 +979,7 @@ form .submit input[type=submit]:hover {
 /** Tienda virtual **/
 
 .banner-promocional{
-  background: url("../img/banner-promocional.png") left no-repeat;
+	text-align: center;
   background-color:white;
   width: 960px;
   height: 180px;
@@ -986,7 +987,7 @@ form .submit input[type=submit]:hover {
   -moz-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
   }
-
+/*
 .banner-promocional ul {
 	float:right;
 	margin-top:20px;
@@ -1021,7 +1022,7 @@ form .submit input[type=submit]:hover {
 	width: 200px;
 	padding: 15px 20px;
 }
-
+*/
 .promocionados {
 	margin-bottom:20px;
 }
@@ -1501,17 +1502,16 @@ ul.cuadros-tallas li{
 #contacto {
 	background: url("../img/trama-footer.png") repeat;
     color:white;
-    width: 92%;
-    padding:4%;
+	padding: 17px  30px;
+   
     
 }
 
 #contacto label{
 	color: #E62B7C;
 	font-size: 14px;
-	float:left;
 	margin-bottom:10px;
-		
+	display: block;
 }
 
 #contacto p{
@@ -1528,14 +1528,12 @@ ul.cuadros-tallas li{
 	border:0;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
-	width: 350px;
-	float:left;
+	width: 100%;
 }
 
 #contacto input[type=submit]{
 	border:0;
 	background: url("../img/trama-contacto.png") repeat-x transparent;
-	float:left;
 	width: 180px;
 	height: 50px;
 	color:white;
@@ -1558,13 +1556,13 @@ ul.cuadros-tallas li{
 
 #contacto .nombre-contacto{
 	float: left;
-    width: 350px;
+    width: 220px;
     margin-right:10px;
 }
 
 #contacto .email-contacto{
 	float: left;
-    width: 350px;
+    width: 220px;
     margin-right:10px;
 }
 
@@ -1756,7 +1754,7 @@ ul.cuadros-tallas li{
 	-moz-border-radius: 3px;
 	width: 350px;
 
-	margin: 10px 0;
+	margin-bottom: 10px;
 	height: 30px;
 }
 
@@ -1918,7 +1916,7 @@ ul.cuadros-tallas li{
 	background: url("../img/trama-footer.png") repeat;
 	float:left;
 	width: 100%;
-	max-height:270px;
+
 }
 
 #misfavoritos .titulo{
@@ -1939,6 +1937,10 @@ ul.cuadros-tallas li{
 	line-height: 60px;
 	color:#fff;
 	font-size:21px;
+}
+a.detalleFavorito{
+	background: url("../img/trama-contacto.png") repeat-x scroll 0 0 transparent;
+	padding: 5px 15px;
 }
 	
 /** End Cesta **/	
@@ -1971,6 +1973,10 @@ ul.cuadros-tallas li{
 	display: none;
 }
 
+form .layer{
+	float:left;
+	width: 45%;
+}
 /*SONDEO*/
 #sondeo .wrapper, #sondeo .mensaje{
 	padding-left:20px;
@@ -2017,4 +2023,95 @@ ul.cuadros-tallas li{
 	padding:5px;
 	margin-right: 10px;	
 	cursor: pointer;
+}
+.carrito{
+	padding:1em;
+	color:white;
+}
+.carrito h1{
+	color:#E62B7C;
+	margin-bottom:1em;
+}
+.carrito a{
+	color:#E62B7C;
+}
+.carrito td a{
+	display:block;
+}
+.carrito td input{
+	width:72px;
+}
+.carrito input[type=submit], .carrito a.boton{
+	background: url("../img/trama-contacto.png") repeat-x scroll 0 0 transparent;
+    border: 0 none;
+
+    color: white;
+    cursor: pointer;
+    font-family: "HelveticaNeueLT LightExt",Helvetica,sans-serif;
+    font-size: 18px;
+    padding:2px;
+}
+.carrito table.pago input[type=submit]{
+  	 float: right;
+    padding: 10px 40px;
+    width: 227px;
+    font-size: 18px;
+}
+.pago  form{
+	width:227px;
+	float:right;
+}
+.carrito .pago input{
+	width: auto;	
+	margin:1em 1em 1em 0;
+}
+.carrito table .submit input{
+	width:100%;
+	font-size:12px;
+	margin:0;
+	
+}
+.pago label{
+	margin-right:1em;
+}
+.carrito .links{
+	  border-bottom: 1px solid;
+	  padding-bottom:2em;
+	  margin: 2em 0;
+}
+.carrito .links a{
+	padding:10px 40px;
+}
+.carrito a.pagar{
+	margin-left: 1em;
+}
+.carrito td span{
+	display:block;
+}
+
+.carrito th{
+	background: url("../img/trama-contacto.png") repeat-x scroll 0 0 transparent;
+}
+.carrito td, .carrito tr, .carrito table{
+	background:none;
+	color:white;
+}
+.carrito table{
+
+}
+.carrito tr.content{
+
+}
+.carrito table tr td.left {
+	border-left: 1px solid #DDDDDD;
+}
+.carrito table tr td.right {
+	border-right: 1px solid #DDDDDD;
+}
+.total th{
+	border: none;
+}
+/*PAGINAS*/
+.pages{
+	color:white;
 }

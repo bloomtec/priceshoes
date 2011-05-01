@@ -7,7 +7,11 @@ class TallasController extends AppController {
 		$this->Talla->recursive = 0;
 		$this->set('tallas', $this->paginate());
 	}
-
+	function getNombre($tallaId){
+		$this->Talla->recursive=0;
+		$talla=$this->Talla->read(null,$tallaId);
+		return $talla["Talla"]["nombre"];
+	}
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid talla', true));

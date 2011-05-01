@@ -31,8 +31,8 @@ if (!empty($_FILES)) {
 	$time = explode(' ',microtime()); 
     list($totalSeconds, $extraMilliseconds) = array($time[1], (int)round($time[0]*1000,3));
     $stringFinal = rand(100, 1000).$fechaActual . $totalSeconds . $extraMilliseconds.rand(0, 1000);
-	$targetFile =  str_replace('//','/',$targetPath) .$stringFinal.".".$fileParts['extension'];
-	
+	//$targetFile =  str_replace('//','/',$targetPath) .$stringFinal.".".$fileParts['extension'];
+	$targetFile =  str_replace('//','/',$targetPath) .$_FILES['upload']['name'];
 	// $fileTypes  = str_replace('*.','',$_REQUEST['fileext']);
 	// $fileTypes  = str_replace(';','|',$fileTypes);
 	// $typesArray = split('\|',$fileTypes);

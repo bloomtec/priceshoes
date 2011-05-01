@@ -2,30 +2,49 @@
 class FavoritesController extends AppController {
 
 	var $name = 'Favorites';
-	function beforeFilter(){
-		parent::beforeFilter();
-		//$this->Auth->allow('init','reset','register');
-		//$this->Auth->allow('login','register',"checkEmail");
+	    var $components = array('Cookie');
+	    function beforeFilter() {
+	    	parent::beforeFilter();
+
+			$this->Auth->allow('ajaxAdd');
 	
 	}
 	function ajaxAdd(){
 		$favorite["Favorite"]["user_id"]=$this->Auth->user("id");
 		$favorite["Favorite"]["product_id"]=$_POST["product_id"];
-		$check=$this->Favorite->find("count",array("conditions"=>array("product_id"=>$_POST["product_id"],"user_id"=>$favorite["Favorite"]["user_id"])));
-		if(!$check){
-			$this->Favorite->create();
-			if($this->Favorite->save($favorite)){
+		if($favorite["Favorite"]["user_id"]){//Si el usuario está logueado
+			
+			$check=$this->Favorite->find("count",array("conditions"=>array("product_id"=>$_POST["product_id"],"user_id"=>$favorite["Favorite"]["user_id"])));
+			if(!$check){
+				$this->Favorite->create();
+				if($this->Favorite->save($favorite)){
+					echo true;
+				} else{
+					echo false;
+				}
+			}else{
 				echo true;
-			} else{
-				echo false;
-			}
-		}else{
+			}	
+		}else{// si no esta logueado se guarda en una cookie
+			$this->Favorite->Product->recursive=-1;
+			$product=$this->Favorite->Product->read(null,$favorite["Favorite"]["product_id"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".id", $product["Product"]["id"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".nombre", $product["Product"]["nombre"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".referencia", $product["Product"]["referencia"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".imagen", $product["Product"]["imagen"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".valor", $product["Product"]["valor"]);
 			echo true;
-		}
-		
+			Configure::write("debug",0);
+			$this->autoRender=0;
+			exit(0);
+		}		
 		Configure::write("debug",0);
 		$this->autoRender=0;
 		exit(0);
+	}
+	function favoritosCookie(){
+		return $this->Cookie->read();
+		
 	}
 	function index() {
 		$this->Favorite->recursive = 0;

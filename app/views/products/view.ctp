@@ -15,14 +15,14 @@
 		 	<h1><?php echo $product['Product']['nombre'];?></h1>
 		 	<?php echo $this->Html->para("precio","$".number_format($product['Product']['precio'], 0, ' ', '.')); ?>
 			<ul class="botones-caracteristicas">
-				<?php if($session->read("Auth.User.id")):?>
+				<?php //if($session->read("Auth.User.id")):?>
 				<li>
 					<?php echo $this->Html->link("Añadir a favoritos",array('controller' => 'favorites', 'action' => 'addToFavorite', $product['Category']['id']),array('class'=>'boton-favoritos')); ?>
 			   		<div class="add-confirm">
 						producto añadido a favoritos
 					</div>
 				<div style="clear:left"></div>
-			    <?php endif;?>
+			    <?php //endif;?>
 				</li>
 				<li>
 				<?php echo $this->Html->link("Añadir al carrito",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-carrito')); ?>

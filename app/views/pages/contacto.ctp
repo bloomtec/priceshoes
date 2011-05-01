@@ -1,3 +1,8 @@
+<?php echo $this->element("banner-promocionados");?>
+<div id="left-content-virtual">
+	 <?php echo $this->element("promociones");?>
+</div>
+<div id="right-content-virtual">
 <div id="contacto">
 	<?php echo $form->create("Page",array("action"=>"contacto","controller"=>"pages"));?>
 	<fieldset>
@@ -14,4 +19,5 @@
 		<?php echo $form->end(__('Envíar', true), array('div' => false));?>
 	</fieldset>
 	<div style="clear:both;"></div>
+</div>
 </div>

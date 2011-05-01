@@ -1,7 +1,7 @@
-<div class="pages form">
+<div class="pages">
 <?php echo $this->Form->create('Page');?>
 	<fieldset>
- 		<legend><?php __('Admin Edit Page'); ?></legend>
+ 		<legend><?php __('Modificar'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('title',array("div"=>"float"));

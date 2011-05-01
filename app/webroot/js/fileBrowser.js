@@ -1,6 +1,6 @@
 $(function(){
 		var wysiwyg=function(){
-		$("#fileBrowser .container li").live("click",function(){
+		$("#fileBrowser .container .seleccionar").live("click",function(){
 		function getUrlParam(paramName)
 		{
 		  var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i') ;
