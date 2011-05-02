@@ -32,7 +32,7 @@
 				<div style="clear:left"></div>
 			    </li>
 				<li>
-				<a class='boton-facebook' href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo $_SERVER['SERVER_NAME']."/products/view/".$product["Product"]["id"];?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');">
+				<a class='boton-facebook' href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo rawurlencode("http://".$_SERVER['SERVER_NAME']."/products/view/".$product["Product"]["id"]);?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');">
 					Compartir en facebook
 				</a> 
 				
