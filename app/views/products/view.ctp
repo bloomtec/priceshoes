@@ -41,7 +41,7 @@
 				<li>
 					<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 						 <!-- <a href="http://twitter.com/share?url=http%3A%2F%2Fdev.twitter.com&amp;via=your_screen_name" class="boton-twitter">Compartir en twitter</a>--> 
-						<a  onclick="window.open('http://twitter.com/share?url=<?php echo urlencode("http://".$_SERVER["SERVER_NAME"]."/products/view/".$product["Product"]["id"]);?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"class="boton-twitter" target="_blank">Compartir en twitter</a>
+						<a  onclick="window.open('http://twitter.com/share?url=<?php echo urlencode("http://".$_SERVER["SERVER_NAME"])."/products/view/".$product["Product"]["id"];?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"class="boton-twitter" target="_blank">Compartir en twitter</a>
 			    <div style="clear:left"></div>
 			    </li>
 			</ul>
