@@ -6,7 +6,7 @@ class FavoritesController extends AppController {
 	    function beforeFilter() {
 	    	parent::beforeFilter();
 
-			$this->Auth->allow('ajaxAdd');
+			$this->Auth->allow('ajaxAdd',"favoritosCookie");
 	
 	}
 	function ajaxAdd(){
@@ -32,7 +32,7 @@ class FavoritesController extends AppController {
 			$this->Cookie->write($favorite["Favorite"]["product_id"].".nombre", $product["Product"]["nombre"]);
 			$this->Cookie->write($favorite["Favorite"]["product_id"].".referencia", $product["Product"]["referencia"]);
 			$this->Cookie->write($favorite["Favorite"]["product_id"].".imagen", $product["Product"]["imagen"]);
-			$this->Cookie->write($favorite["Favorite"]["product_id"].".valor", $product["Product"]["valor"]);
+			$this->Cookie->write($favorite["Favorite"]["product_id"].".valor", $product["Product"]["precio"]);
 			echo true;
 			Configure::write("debug",0);
 			$this->autoRender=0;
@@ -41,6 +41,9 @@ class FavoritesController extends AppController {
 		Configure::write("debug",0);
 		$this->autoRender=0;
 		exit(0);
+	}
+	function favoritosDb() {
+		return $this->Favorite->find("all",array("consitions"=>array("user_id"=>$this->Auth->user("id"))));
 	}
 	function favoritosCookie(){
 		return $this->Cookie->read();
