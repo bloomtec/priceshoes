@@ -2,7 +2,7 @@
 class OrdersController extends AppController {
 
 	var $name = 'Orders';
-	var $uses = array('Order', 'OrderItem');
+	var $uses = array('Order', 'OrderItem',"UserField");
 	
 	private function extraerItems($datos = null){
 		$items = array();
@@ -59,6 +59,9 @@ class OrdersController extends AppController {
 	public function confirmarOrden($order_id = null){
 		if(isset($order_id)){
 			$this->set(array('order_id'=>$order_id));
+		}
+		if($this->Auth->user("id")){
+			$this->set("datos",$this->UserField->read(null,$this->Auth->user("id")));
 		}
 	}
 	

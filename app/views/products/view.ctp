@@ -32,13 +32,16 @@
 				<div style="clear:left"></div>
 			    </li>
 				<li>
-				<script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script>
-				<fb:send href="<?php echo $_SERVER['SERVER_NAME'].$html->url(array("controller"=>"products","action"=>"view",$product['Product']['id']));?>" font=""></fb:send>
-				<?php echo $this->Html->link("Compartir en facebook",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-facebook')); ?>
+				<a class='boton-facebook' href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$html->url("/products/view/".$product["Product"]["id"]));?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');">
+					Compartir en facebook
+				</a> 
+				
 			    <div style="clear:left"></div>
 			    </li>
 				<li>
-				<?php echo $this->Html->link("Compartir en Twitter",array('controller' => 'categories', 'action' => 'view', $product['Category']['id']),array('class'=>'boton-twitter')); ?>
+					<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+						 <!-- <a href="http://twitter.com/share?url=http%3A%2F%2Fdev.twitter.com&amp;via=your_screen_name" class="boton-twitter">Compartir en twitter</a>--> 
+						<a  onclick="window.open('http://twitter.com/share?url=<?php echo rawurlencode("http://".$_SERVER["SERVER_NAME"]."/products/view/".$html->url("/products/view/".$product["Product"]["id"]));?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"class="boton-twitter" target="_blank">Compartir en twitter</a>
 			    <div style="clear:left"></div>
 			    </li>
 			</ul>

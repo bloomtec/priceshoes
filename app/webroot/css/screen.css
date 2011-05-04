@@ -2113,6 +2113,7 @@ form .layer{
 .total th{
 	border: none;
 }
+<<<<<<< HEAD
 /*MI CUENTA*/
 .mi-cuenta{
 	
@@ -2137,6 +2138,13 @@ form .layer{
 .user-info dd {
 	color:white;
 	margin-bottom:0.5em;
+}
+
+
+.sociales a{
+	width: 24px;
+	height: 23px;
+	line-height: 23px;
 }
 
 /*PAGINAS*/
