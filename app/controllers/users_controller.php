@@ -17,8 +17,20 @@ class UsersController extends AppController {
 		$favorites=$this->User->Favorite->find("all",array("conditions"=>array("user_id"=>$this->Auth->user("id"))));
 		$user=$this->User->read(null,$this->Auth->user("id"));
 		$this->set(compact("favorites","user"));
+		
 	}
-  
+	function ordenes(){
+		$this->set("paymentTypes",$this->User->Order->PaymentType->find("list"));
+		$this->set("estadosOrdenes",$this->User->Order->OrderState->find("list"));
+		$this->set("ordenes",$this->User->Order->find("all",array("conditions"=>array("user_id"=>$this->Auth->user("id")))));
+	}
+  	function orden($id){
+  		
+  		$this->User->Order->OrderItem->recursive=2;
+		$this->User->Order->OrderItem->unbindModel(array("belongsTo"=>array("Order")));
+  		$items=$this->User->Order->OrderItem->find("all",array("conditions"=>array("order_id"=>$id)));
+  	$this->set(compact("items"));
+	}
 	function checkEmail(){
 		$checkMail=$this->User->findByEmail($_GET["data"]["User"]["email"]);
 			if($checkMail){

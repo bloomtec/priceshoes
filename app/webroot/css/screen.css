@@ -2146,7 +2146,12 @@ form .layer{
 	height: 23px;
 	line-height: 23px;
 }
-
+.message{
+	color:white;
+}
+table#ordenes tr td{
+	background:none;
+}
 /*PAGINAS*/
 .pages{
 	color:white;

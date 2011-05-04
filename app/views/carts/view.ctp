@@ -58,7 +58,7 @@
 			</td>
 			<td align="center">
 				<?php Configure::read('Shop.currency');?>
-				<?php echo "$" . $cartContent['products']['precio'];?>
+				<?php echo "$".number_format( $cartContent['products']['precio'], 0, ' ', '.'); ?>
 			</td>
 			<td width="75" align="center">
 				<?php echo $form->input('Cart.cantidad', array('type'=>'text', 'label'=>'', 'value'=>$cartContent['carts']['cantidad']));?>

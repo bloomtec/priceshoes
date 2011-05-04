@@ -9,7 +9,8 @@
 	<?php $userField["UserField"]=$user["UserField"]?>
 	<ul class="userMenu">
 		<li><?php echo $html->link("Modificar Datos",array("action"=>"edit")) ?></li>
-		<li><?php echo $html->link("Cambiar contraseña",array("action"=>"cambiarContrasena")) ?></li>
+		<li><?php echo $html->link("Cambiar Contraseña",array("action"=>"cambiarContrasena")) ?></li>
+		<li><?php echo $html->link("Mis Ordenes",array("action"=>"ordenes")) ?></li>
 	</ul>
 	<div class="user-info">
 		<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -86,44 +87,4 @@
 		</dd>
 	</dl>
 	</div>
-	<div class="carrito">
-	<h2><?php __('ESTADO DE MIS COMPRAS');?></h2>
-		<table cellpadding="0" cellspacing="0">
-		<tr>
-	
-				<th colspan="2">Producto</th>
-				<th>Precio</th>
-	
-			
-		</tr>
-		<?php
-		$i = 0;
-		foreach ($favorites as $favorite):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			
-			<td>
-				<?php echo $this->Html->image("uploads/200x200/".$favorite['Product']['imagen'],array("width"=>"100")); ?>
-				
-			</td>
-			<td>
-				<span><?php echo $html->link( $cartContent['products']['nombre'], "/products/view/".$cartContent['products']['id']);?></span>
-				<span>Ref. <?php echo $this->requestAction("/products/getRef/".$cartContent['products']['id']); ?></span>
-				<span>Talla <?php echo $this->requestAction("/tallas/getNombre/".$cartContent['inventories']['talla_id']); ?></span>
-				<span>Color <?php echo $this->requestAction("/colores/getNombre/".$cartContent['inventories']['color_id']); ?></span>
-			</td>
-			<td>
-				
-			</td>
-	
-			
-		</tr>
-	<?php endforeach; ?>
-		</table>
-	</div>
-
 </div>

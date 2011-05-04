@@ -2,7 +2,7 @@
 class OrdersController extends AppController {
 
 	var $name = 'Orders';
-	var $uses = array('Order', 'OrderItem',"UserField");
+	var $uses = array('Order', 'OrderItem',"User");
 	
 	private function extraerItems($datos = null){
 		$items = array();
@@ -61,15 +61,16 @@ class OrdersController extends AppController {
 			$this->set(array('order_id'=>$order_id));
 		}
 		if($this->Auth->user("id")){
-			$this->set("datos",$this->UserField->read(null,$this->Auth->user("id")));
+			$this->set("datos",$this->User->read(null,$this->Auth->user("id")));
 		}
 	}
 	
 	public function pagar(){
 		$this->autoRender = false;
 		if(!empty($this->data)){
+			if($this->Auth->user("id")) $this->data["Order"]["user_id"]= $this->Auth->user("id");
 			if($this->Order->save($this->data)){
-				$this->Session->setFlash("Orden Confirmada");
+				$this->Session->setFlash("Orden Envianda");
 			} else {
 				$this->Session->setFlash("Hubo un problema al confirmar su orden");
 			}
