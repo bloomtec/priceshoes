@@ -7,6 +7,10 @@ class ProductsController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->allow("index","view","promocionados","novedad","news","search");
 	}
+	function getProduct($id){
+		$this->Product->recursive=-1;
+		return $this->Product->read(null,$id);
+	}
 	function getRef($productId){
 		$this->Product->recursive=0;
 		$product=$this->Product->read(null,$productId);

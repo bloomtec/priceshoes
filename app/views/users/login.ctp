@@ -5,7 +5,7 @@
 			<h2>Nuevos Clientes PriceShoes</h2>
 			<p>Al crear una cuenta en nuestra tienda, usted será podrá moverse a través del proceso de pago más rápido, guardar múltiples direcciones para sus envíos, ver y guardar sus favoritos y mas.</p>
 			<div class="espacio-crear">
-				<?php echo $html->link('Crear',array("controller"=>"pages","action"=>"crear_usuario"), array("id"=>"crear"));?>
+				<?php echo $html->link('Crear',array("controller"=>"users","action"=>"register"), array("id"=>"crear"));?>
 				<div style="clear:both;"></div>
 			</div>
 		</div>

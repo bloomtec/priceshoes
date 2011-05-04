@@ -14,7 +14,7 @@ class AppController extends Controller {
 		'username' => 'email',
 		'password' => 'password'
 		);
-		$this->Auth->allow("*"); 
+		//$this->Auth->allow("*"); 
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
 		$this->Auth->loginRedirect  = array('controller'=>'users','action'=>'index');
 		
@@ -46,6 +46,7 @@ class AppController extends Controller {
 		$this->Cookie->domain = 'localhost';
 		$this->Cookie->secure = false; //i.e. only sent if using secure HTTPS
 		$this->Cookie->key = 'qSI232qs*&sXOw!';
+			//$this->Cookie->delete();
 			//$this->Auth->allow('init','reset','register');
 	}
 

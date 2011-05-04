@@ -1764,7 +1764,9 @@ ul.cuadros-tallas li{
 	margin-bottom:10px;
 	
 }
-
+#crear-usuario fieldset label{
+	float:left;
+}
 #crear-usuario .forma-crear{
 	width: 43%;
 	float:left;
@@ -2111,6 +2113,32 @@ form .layer{
 .total th{
 	border: none;
 }
+/*MI CUENTA*/
+.mi-cuenta{
+	
+}
+.userMenu,.user-info, .mi-cuenta h2{
+	padding:1em;
+	
+}
+.mi-cuenta h2{
+	color:white;
+}
+.userMenu li{
+	margin-bottom:0.5em;
+}
+.userMenu a, .user-info dt{
+	color:#E62B7C;
+	
+}
+.user-info dt{
+	
+}
+.user-info dd {
+	color:white;
+	margin-bottom:0.5em;
+}
+
 /*PAGINAS*/
 .pages{
 	color:white;
