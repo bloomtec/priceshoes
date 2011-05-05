@@ -1426,16 +1426,14 @@ class FormHelper extends AppHelper {
 			'escape' => true,
 			'secure' => null,
 			'empty' => '',
-			'showParents' => false,
-			'hiddenField' => true
+			'showParents' => false
 		);
 
 		$escapeOptions = $this->_extractOption('escape', $attributes);
 		$secure = $this->_extractOption('secure', $attributes);
 		$showEmpty = $this->_extractOption('empty', $attributes);
 		$showParents = $this->_extractOption('showParents', $attributes);
-		$hiddenField = $this->_extractOption('hiddenField', $attributes);
-		unset($attributes['escape'], $attributes['secure'], $attributes['empty'], $attributes['showParents'], $attributes['hiddenField']);
+		unset($attributes['escape'], $attributes['secure'], $attributes['empty'], $attributes['showParents']);
 
 		$attributes = $this->_initInputField($fieldName, array_merge(
 			(array)$attributes, array('secure' => false)
@@ -1458,15 +1456,13 @@ class FormHelper extends AppHelper {
 			$style = ($attributes['multiple'] === 'checkbox') ? 'checkbox' : null;
 			$template = ($style) ? 'checkboxmultiplestart' : 'selectmultiplestart';
 			$tag = $this->Html->tags[$template];
-			if ($hiddenField) {
-				$hiddenAttributes = array(
-					'value' => '',
-					'id' => $attributes['id'] . ($style ? '' : '_'),
-					'secure' => false,
-					'name' => $attributes['name']
-				);
-				$select[] = $this->hidden(null, $hiddenAttributes);
-			}
+			$hiddenAttributes = array(
+				'value' => '',
+				'id' => $attributes['id'] . ($style ? '' : '_'),
+				'secure' => false,
+				'name' => $attributes['name']
+			);
+			$select[] = $this->hidden(null, $hiddenAttributes);
 		} else {
 			$tag = $this->Html->tags['selectstart'];
 		}

@@ -68,7 +68,6 @@ class Inflector {
 		),
 		'irregular' => array(
 			'atlas' => 'atlases',
-			'color' => 'colores',
 			'beef' => 'beefs',
 			'brother' => 'brothers',
 			'child' => 'children',
@@ -97,7 +96,8 @@ class Inflector {
 			'soliloquy' => 'soliloquies',
 			'testis' => 'testes',
 			'trilby' => 'trilbys',
-			'turf' => 'turfs'
+			'turf' => 'turfs',
+			'color'=>'colores'
 		)
 	);
 

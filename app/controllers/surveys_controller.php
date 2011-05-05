@@ -2,7 +2,10 @@
 class SurveysController extends AppController {
 
 	var $name = 'Surveys';
-
+	function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
+	}
 	function index() {
 		$this->Survey->recursive = 0;
 		$this->set('surveys', $this->paginate());

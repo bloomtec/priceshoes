@@ -4,7 +4,10 @@ class ImagesController extends AppController {
 	var $name = 'Images';
 	var $components=array("Attachment");
 	var $wysiwygPath="wysiwyg";
-
+	function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
+	}
 	function admin_obtenerImagenes($galeriaID = null){
 		$this->layout='ajax';
 		$this->set('imagenes', $this->Image->find('all', array('conditions' => array('gallery_id' => $galeriaID))));
@@ -29,48 +32,7 @@ class ImagesController extends AppController {
 		$this->set('image', $this->Image->read(null, $id));
 	}
 
-	function add() {
-		if (!empty($this->data)) {
-			$this->Image->create();
-			if ($this->Image->save($this->data)) {
-				$this->Session->setFlash(__('The image has been saved', true));
-				//$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The image could not be saved. Please, try again.', true));
-			}
-		}
-	}
-
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid image', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		if (!empty($this->data)) {
-			if ($this->Image->save($this->data)) {
-				$this->Session->setFlash(__('The image has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The image could not be saved. Please, try again.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->data = $this->Image->read(null, $id);
-		}
-	}
-
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for image', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Image->delete($id)) {
-			$this->Session->setFlash(__('Image deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Image was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}
+	
 	function admin_index() {
 		$this->Image->recursive = 0;
 		$this->set('images', $this->paginate());

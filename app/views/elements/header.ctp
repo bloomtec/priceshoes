@@ -7,6 +7,7 @@
 	              <?php echo $form->submit(__('Buscar', true), array('div' => false));?>   
 	            </fieldset>
 	        <?php echo $form->end();?>
+	        <div style="clear:both;"></div>
 		</div>	
 		
 		<div class="opciones">
@@ -20,11 +21,13 @@
 				 ?>
 				</li>
 		        <li>
-		             <?php 
-            	echo $html->link("Registro",
-            			array(
-							"controller"=>"users","action"=>"register")
-						);
+		         <?php 
+            		if(!$session->read("Auth.User.id")){
+            			echo $html->link("Registro",array("controller"=>"users","action"=>"register"));
+					}else{
+						 echo $html->link("Salir",array("controller"=>"users","action"=>"logout"));
+					}
+					
 				?>
 		        </li>
 			</ul>

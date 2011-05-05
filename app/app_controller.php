@@ -2,23 +2,17 @@
 
 class AppController extends Controller {
 
-	var $components = array("Acl","Session", "Auth", "RequestHandler","Cookie");
+	var $components = array("Auth","Session","Cookie");
 	var $uses = array("Inventory", "Cart");
 	var $helpers = array("Form", "Html", "Session", "Javascript");
 	var $session_id;
 	var $category_id;
 	var $inventory_id;
 
-	function beforeFilter() {
-		$this->Auth->fields = array(
-		'username' => 'email',
-		'password' => 'password'
-		);
-		//$this->Auth->allow("*"); 
-		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
-		$this->Auth->loginRedirect  = array('controller'=>'users','action'=>'index');
+	function beforeFilter() {	
 		
 		if(isset($this->params["prefix"])&&$this->params["prefix"]=="admin"){
+			$this->Auth->userScope = array('User.role_id' => 1);
 			$this->layout="admin";
 		}
 		
@@ -47,7 +41,15 @@ class AppController extends Controller {
 		$this->Cookie->secure = false; //i.e. only sent if using secure HTTPS
 		$this->Cookie->key = 'qSI232qs*&sXOw!';
 			//$this->Cookie->delete();
-			//$this->Auth->allow('init','reset','register');
+			//
+		$this->Auth->fields = array(
+		'username' => 'email',
+		'password' => 'password'
+		);
+		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
+		$this->Auth->loginRedirect  = array('controller'=>'users','action'=>'index');
+		$this->Auth->allow('*');
+		
 	}
 
 	function beforeRender() {
@@ -56,5 +58,3 @@ class AppController extends Controller {
 	}
 
 }
-
-?>

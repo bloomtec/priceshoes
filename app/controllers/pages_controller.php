@@ -2,18 +2,20 @@
 class PagesController extends AppController {
 
 	var $name = 'Pages';
-function beforeFilter(){
-		parent::beforeFilter();
-		$this->Auth->allow('view');
+	function beforeFilter(){
+			parent::beforeFilter();
+			$this->Auth->allow('*');
+			//debug($this->Auth); 
 	}
-	
+		
 
-	function view($slug = null) {
-		if (!$slug) {
+	function view($s = null) {
+		
+		if (!$s) {
 			$this->Session->setFlash(__('Página inválida', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('page', $this->Page->findBySlug($slug));
+		$this->set('page', $this->Page->findBySlug($s));
 
 	}
 	function bannerPromocional(){

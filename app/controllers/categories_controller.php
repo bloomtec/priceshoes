@@ -5,7 +5,7 @@ class CategoriesController extends AppController {
 	
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->allow("index","view","menuCategories","promocionadas");
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
 	}
 	
 	function getAll() {

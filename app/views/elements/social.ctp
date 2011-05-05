@@ -5,13 +5,14 @@
 			</p>
 			<ul>
 				<li>
-					<a href="#">
-					<img src="img/facebook.png" alt="home">
+					<a href="http://www.facebook.com/priceshoes.co">
+						<?php echo $html->image("facebook.png",array("alt"=>"facebook"))?>
+				
 					</a>
 				</li>
 				<li>
 					<a href="#">
-					<img src="img/twitter.png" alt="mail">
+					<?php echo $html->image("twitter.png",array("alt"=>"twitter"))?>
 					</a>
 				</li>
 			</ul>

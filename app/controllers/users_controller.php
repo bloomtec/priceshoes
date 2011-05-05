@@ -10,7 +10,7 @@ class UsersController extends AppController {
     function beforeFilter(){
 		parent::beforeFilter();
 		//$this->Auth->allow('init','reset','register');
-		$this->Auth->allow('login','register',"checkEmail");
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete","cambiarContrasena");
 	
 	}
 	function index() {

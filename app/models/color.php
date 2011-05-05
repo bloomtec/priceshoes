@@ -1,6 +1,7 @@
 <?php
 class Color extends AppModel {
 	var $name = 'Color';
+	var $useDatabase="colores";
 	var $displayField = 'nombre';
 	var $validate = array(
 		'nombre' => array(

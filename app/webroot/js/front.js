@@ -88,6 +88,12 @@ $(function(){
 			$(this).addClass("selected");
 			that.change($(this));
 		});
+		//ACTUALIZA la talla.
+		$("ul.cuadros-tallas li").click(function(){
+			$("ul.cuadros-tallas li").removeClass("selected");
+			$(this).addClass("selected");
+		
+		});
 		
 		//Reemplaza la imagen principal cuando se le hace click a un thumb
 		$(".galeria .thumbs img").live("click",function(){
@@ -135,6 +141,7 @@ $(function(){
 			});
 			e.preventDefault()
 		});
+		
 	}();
 	var sondeo=function(){
 		$("#sondeo li span").click(function(){

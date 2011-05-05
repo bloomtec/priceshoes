@@ -18,7 +18,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Imagen'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->image($category['Category']['imagen']); ?>
+			<?php echo   $this->Html->image("uploads/".$category['Category']['imagen'],array("width"=>200))  ?>
 			&nbsp;
 		</dd>
 	</dl>

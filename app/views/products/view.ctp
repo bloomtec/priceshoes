@@ -56,10 +56,10 @@
 			  			if (!empty($inventarios)):
 			  			$i=0;
 			  			foreach($inventarios as $inventario): 
-			  			if($i==0) $inventarioActual=$inventario;
+			  			if($i==0) {$inventarioActual=$inventario;}
 						$i++;
 			  		?>
-			  		<li class="<?php if($i==1) echo 'selected'?>" rel="<?php echo $product['Product']['id']."-".$inventario['Color']['id'];?>" style="background-color:<?php echo $inventario['Color']['codigo']?>"></li>
+			  		<li class="<?php if($i===1) echo 'selected'?>" rel="<?php echo $product['Product']['id']."-".$inventario['Color']['id'];?>" style="background-color:<?php echo $inventario['Color']['codigo']?>"></li>
 			  		<?php endforeach;
 					      endif;
 			  		?>
@@ -72,12 +72,12 @@
 				<ul class="cuadros-tallas">
 					<?php $inventarios=$this->requestAction("/products/getColores/".$product['Product']['id']); ?>
 			  		<?php 
-			  			$i=0;
+			  		
 			  			if (!empty($inventarios)): 
-						$i++;
+						
 			  		?>
-			  		<?php foreach($inventarioActual["Talla"] as $talla): ?>
-			  		<li rel="<?php echo $talla['id'];?>" class="<?php if($i==1) echo "selected"?>"> <?php echo $talla["nombre"] ?></li>
+			  		<?php $j=0;foreach($inventarioActual["Talla"] as $talla): ;?>
+			  		<li rel="<?php echo $talla['id'];?>" class="<?php if($j++==0) echo "selected"?>"> <?php echo $talla["nombre"] ?></li>
 			  		<?php endforeach;
 						endif;
 			  		?>	

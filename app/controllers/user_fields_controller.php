@@ -2,7 +2,10 @@
 class UserFieldsController extends AppController {
 
 	var $name = 'UserFields';
-
+	function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete","add","edit");
+	}
 	function index() {
 		$this->UserField->recursive = 0;
 		$this->set('userFields', $this->paginate());
@@ -50,18 +53,7 @@ class UserFieldsController extends AppController {
 		$this->set(compact('users'));
 	}
 
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for user field', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->UserField->delete($id)) {
-			$this->Session->setFlash(__('User field deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('User field was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}
+	
 	function admin_index() {
 		$this->UserField->recursive = 0;
 		$this->set('userFields', $this->paginate());

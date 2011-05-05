@@ -3,7 +3,10 @@ class InventoriesController extends AppController {
 
 	var $name = 'Inventories';
 	var $uses=array("Inventory","Gallery");
-	
+	function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
+	}
 	function getInventoryID ( $product_id = null, $color_id = null, $talla_id = null ) {
 		$data = $this -> Inventory -> find('first', array('conditions' => array('product_id' => $product_id, 'talla_id' => $talla_id, 'color_id' => $color_id)));
 		return $data['Inventory']['id'];
@@ -22,56 +25,7 @@ class InventoriesController extends AppController {
 		$this->set('inventory', $this->Inventory->read(null, $id));
 	}
 
-	function add() {
-		if (!empty($this->data)) {
-			$this->Inventory->create();
-			if ($this->Inventory->save($this->data)) {
-				$this->Session->setFlash(__('The inventory has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The inventory could not be saved. Please, try again.', true));
-			}
-		}
-		$products = $this->Inventory->Product->find('list');
-		$tallas = $this->Inventory->Talla->find('list');
-		$colores = $this->Inventory->Color->find('list');
-		$this->set(compact('products', 'tallas', 'colores'));
-	}
-
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid inventory', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		if (!empty($this->data)) {
-			if ($this->Inventory->save($this->data)) {
-				$this->Session->setFlash(__('The inventory has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The inventory could not be saved. Please, try again.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->data = $this->Inventory->read(null, $id);
-		}
-		$products = $this->Inventory->Product->find('list');
-		$tallas = $this->Inventory->Talla->find('list');
-		$colores = $this->Inventory->Color->find('list');
-		$this->set(compact('products', 'tallas', 'colores'));
-	}
-
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for inventory', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Inventory->delete($id)) {
-			$this->Session->setFlash(__('Inventory deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Inventory was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}
+	
 	function admin_index() {
 		$this->Inventory->recursive = 0;
 		$this->set('inventories', $this->paginate());

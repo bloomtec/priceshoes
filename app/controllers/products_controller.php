@@ -5,7 +5,7 @@ class ProductsController extends AppController {
 	var $uses=array("Product","Gallery");
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->allow("index","view","promocionados","novedad","news","search");
+		$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
 	}
 	function getProduct($id){
 		$this->Product->recursive=-1;
@@ -65,9 +65,22 @@ class ProductsController extends AppController {
 		 * 
 		 */
 		$this->Product->recursive=-1;
-		$masVendidos=$this->Product->find("all",array("limit"=>"10"));
-		$seleccionado=rand(0, count($masVendidos)-1);
-		return $masVendidos[$seleccionado];
+		$masVendidos=$this->Product->find("all",array("joins"=>array(
+			array('table' => 'inventories',"alias"=>"Inventory","type"=>"left",'conditions' => array(
+					'Product.id=Inventory.product_id',
+					)
+			)
+		),"conditions"=>array("Inventory.disponible"=>true,"Product.mas_vendido"=>true),
+			"fields"=>array("DISTINCT Product.id","imagen","nombre","precio")
+		));
+		
+		
+		if(!empty($masVendidos)){
+			$seleccionado=rand(0, count($masVendidos)-1);
+			return $masVendidos[$seleccionado];
+		} else{
+			return false;
+		}
 	}
 	function view($id = null) {
 		$this->layout="virtual";

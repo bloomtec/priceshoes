@@ -9,7 +9,7 @@
 		$favoritos = $this->requestAction("/favorites/favoritosCookie");
 		$favoritosDB=null;
 		if($session->read("Auth.User.id")) $favoritosDB=$this->requestAction("/favorites/favoritosDb");
-		if ((!empty($favoritos) && is_array($favoritos))||(!empty($favoritosDB) && is_array($favoritosDB))) {
+		if ((!empty($favoritos) && is_array($favoritos))) {
 
 			$subTotal = 0;
 	?>
@@ -52,6 +52,7 @@
 	
 	
 	<?php
+if (!empty($favoritosDB) && is_array($favoritosDB)) {
 		foreach($favoritosDB as $favoritoDB) { 
 		// Subtotal Calculation
 		//$subTotal += $favorito['precio'] * $cartContent['carts']['cantidad'];
@@ -87,6 +88,7 @@
 	</tr>
 	<?php
 		} 
+		}
 	?>
 	
 	

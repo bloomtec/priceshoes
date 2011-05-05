@@ -361,10 +361,11 @@ form .submit input[type=submit]:hover {
      float:right;
      color:#ffffff;
      text-transform:uppercase;
+     clear:right;
 	}	
 	
 #header .opciones ul {
-	 margin-top:32px;
+	 margin-top:1em;
 	}
 
 #header .opciones ul li {
@@ -424,7 +425,9 @@ form .submit input[type=submit]:hover {
 	color: #000;
 	}
 
-
+#buscar{
+	 float:right;
+}
 #buscar form{
    float:right;
    right:20px;
@@ -580,6 +583,10 @@ form .submit input[type=submit]:hover {
 	color:#E63485;
 	font-weight: bold;
 	}
+#virtual a.no-color {
+	color:#444044;
+	font-weight: normal;
+}
 
 #social{
 	width: 270px;
@@ -1397,6 +1404,7 @@ form .submit input[type=submit]:hover {
     height: 32px;
     line-height: 30px;
     padding-left: 37px;
+    font-size:14px;
 }
 
 #producto-showcase a.boton-twitter{
@@ -1406,6 +1414,8 @@ form .submit input[type=submit]:hover {
     height: 32px;
     line-height: 30px;
     padding-left: 37px;
+     font-size:14px;
+     cursor:pointer;
 }
 
 #producto-showcase ul.botones-caracteristicas{
@@ -1492,7 +1502,9 @@ ul.cuadros-tallas li{
 	text-align: center;
 	line-height: 26px;
 }
-
+ul.cuadros-tallas li.selected, ul.cuadros-colores li.selected{
+	border: 2px solid #E62B7C;
+}
 /** End Producto Showcase **/
 
 /** End Tienda virtual **/
@@ -1981,16 +1993,17 @@ form .layer{
 }
 /*SONDEO*/
 #sondeo .wrapper, #sondeo .mensaje{
-	padding-left:20px;
+	padding-left:15px;
 	padding-top:30px;
 	color:white;
+	font-size:14px;
 }
 #sondeo .mensaje{
 	display:none;
 }
 #sondeo h3{
 	color:#E62B7C;
-	font-size:110%;
+	font-size:18px;
 	margin-bottom:20px;
 }
 #sondeo ul{
@@ -2007,8 +2020,8 @@ form .layer{
 	background:url("../img/checkbox_inactivo.png");
 	display:block;
 	float:left;
-	width:34px;
-	height:34px;
+	width:25px;
+	height:25px;
 	margin-right:10px;
 	cursor: pointer;
 	

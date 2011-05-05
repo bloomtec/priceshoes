@@ -32,7 +32,6 @@
 		
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $product['Product']['id'])); ?>
-			<?php echo $this->Html->link(__('Ver', true), array('action' => 'updateField', $product['Product']['id'],"novedad",true)); ?>
 			<?php echo $this->Html->link(__('Galerias', true), array('controller'=>'galleries','action' => 'product', $product['Product']['id'])); ?>
 			<?php echo $this->Html->link(__('Disponibilidad', true), array('controller'=>'products','action' => 'disponibilidad', $product['Product']['id'])); ?>
 			<?php echo $this->Html->link(__('Modificar', true), array('action' => 'edit', $product['Product']['id'])); ?>

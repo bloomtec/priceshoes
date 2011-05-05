@@ -382,8 +382,7 @@ class AuthComponent extends Object {
 			$controller->data[$model->alias][$this->fields['password']] = null;
 			return false;
 		} else {
-			$user = $this->user();
-			if (!$user) {
+			if (!$this->user()) {
 				if (!$this->RequestHandler->isAjax()) {
 					$this->Session->setFlash($this->authError, $this->flashElement, array(), 'auth');
 					if (!empty($controller->params['url']) && count($controller->params['url']) >= 2) {
@@ -443,7 +442,7 @@ class AuthComponent extends Object {
 			break;
 		}
 
-		if ($this->isAuthorized($type, null, $user)) {
+		if ($this->isAuthorized($type)) {
 			return true;
 		}
 
