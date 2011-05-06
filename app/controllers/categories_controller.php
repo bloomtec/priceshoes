@@ -2,6 +2,7 @@
 class CategoriesController extends AppController {
 
 	var $name = 'Categories';
+	var $uses = array('Category', 'Inventory');
 	
 	function beforeFilter(){
 		parent::beforeFilter();
@@ -51,16 +52,13 @@ class CategoriesController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		
-		$this->paginate=array("Product"=>array("limit"=>"12","joins"=>array(
-			array('table' => 'inventories',"alias"=>"Inventory","type"=>"left",'conditions' => array(
-					'Product.id=Inventory.product_id',
-					)
-			)
-		),"conditions"=>array("Inventory.disponible"=>true),
-			"fields"=>array("DISTINCT Product.id","imagen","nombre","precio")
-		));
-		//debug($this->paginate("Product",array("category_id"=>$id)));
-		$this->set("products",$this->paginate("Product",array("category_id"=>$id)));
+		$product_ids = $this->Inventory->find('list', array('conditions'=>array('Inventory.disponible'=>'1'), 'fields'=>'Inventory.product_id'));
+		
+		$this->paginate = array(
+			'Product' => array('limit' => 12,
+									'conditions' => array('Product.id'=>$product_ids)));
+		
+		$this->set('products', $this->paginate('Product', array('category_id' => $id)));
 		$this->set('category', $this->Category->read(null, $id));
 	}
 	

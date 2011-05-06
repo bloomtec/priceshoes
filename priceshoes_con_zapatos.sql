@@ -173,10 +173,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `priceshoes`.`pages` ;
 
 CREATE  TABLE IF NOT EXISTS `priceshoes`.`pages` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NULL DEFAULT NULL ,
   `description` VARCHAR(45) NULL DEFAULT NULL ,
   `content` LONGTEXT NULL DEFAULT NULL ,
+  `slug` VARCHAR(45) NULL ,
+  `created` DATETIME NULL ,
+  `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -220,6 +223,7 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `category_id` INT NOT NULL ,
   `nombre` VARCHAR(45) NULL DEFAULT NULL ,
+  `referencia` VARCHAR(45) NULL ,
   `precio` DOUBLE NULL DEFAULT NULL ,
   `base_iva` DOUBLE NULL DEFAULT NULL ,
   `valor_iva` DOUBLE NULL DEFAULT NULL ,
@@ -228,6 +232,7 @@ CREATE  TABLE IF NOT EXISTS `priceshoes`.`products` (
   `activo` TINYINT(1)  NULL ,
   `promocionar` TINYINT(1)  NULL ,
   `novedad` TINYINT(1)  NULL ,
+  `mas_vendido` TINYINT(1)  NULL ,
   `imagen` VARCHAR(200) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_products_categories1` (`category_id` ASC) ,
