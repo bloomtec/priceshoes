@@ -27,7 +27,7 @@
 		<td><?php echo $page['Page']['updated']; ?>&nbsp;</td>
 		<td class="actions_icons">
 			<?php echo $this->Html->link("Ver",array('action' => 'view', $page['Page']['id'])); ?>
-			<?php echo $this->Html->link("Modificar",array('action' => 'view', $page['Page']['id'])); ?>
+			<?php echo $this->Html->link("Modificar",array('action' => 'edit', $page['Page']['id'])); ?>
 			<?php // echo $this->Html->link(__('Delete', true), array('action' => 'delete', $page['Page']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $page['Page']['id'])); ?>
 		</td>
 	</tr>

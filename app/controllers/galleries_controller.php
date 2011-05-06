@@ -12,7 +12,9 @@ class GalleriesController extends AppController {
 	}
 	function getByNombre(){
 		$nombre=$_GET["nombre"];
-		echo json_encode($this->Gallery->findByNombre($nombre));
+		$gallery=$this->Gallery->findByNombre($nombre);
+		//INSERTAR TALLAS DE ESTE 
+		echo json_encode($gallery);
 		Configure::write("debug",0);
 		$this->autorender=false;
 		exit(0);

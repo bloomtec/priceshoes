@@ -31,6 +31,9 @@
 		</div>
 		<div id="main-nav">
 	          <ul>
+	          	<li>
+				<?php echo $html->link("Tienda Virtual","/tienda-virtual")?>
+				</li>
 	          	<?php 
 				$categorias=$this->requestAction("/categories/promocionadas");
 				foreach($categorias as $categoria):
@@ -41,9 +44,7 @@
 				<?php
 				endforeach;
 				?>
-				<li>
-				<?php echo $html->link("Contacto",array("controller"=>"pages","action"=>"contacto"))?>
-				</li>
+				
 	          </ul>
 	    </div>
 	<div style="clear:both"></div>    

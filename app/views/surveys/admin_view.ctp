@@ -51,7 +51,7 @@ foreach ($survey['SurveyOption'] as $surveyOption){
 
 			<td><?php echo $surveyOption['name'];?></td>
 			<td><?php echo $surveyOption['votos'];?></td>
-			<td><?php echo($surveyOption['votos']/$total)*100;?></td>
+			<td><?php echo round($surveyOption['votos']/$total*100)/10;?></td>
 		</tr>
 	<?php endforeach; ?>
 		<tr>

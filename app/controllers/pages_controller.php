@@ -82,11 +82,11 @@ class PagesController extends AppController {
 				$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 				$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 				$para="ricardopandales@gmail.com";
-				$cabeceras .= 'From: Tecnocenter <info@tecnocenter.com.co>' . "\r\n";
+				$cabeceras .= 'From: Priceshoes <info@priceshoes.com.co>' . "\r\n";
 				if(mail($para, $asunto, $mensaje, $cabeceras)){
-					$this->set("mensaje",'Datos enviados a su correo');
+					$this->Session->setFlash(__('Su solicitud fue enviada, muchas gracias por contactarnos.', true));
 				}else {
-					$this->set("mensaje",'Datos no enviados a su correo, por favor intenta mas tarde');
+					$this->Session->setFlash(__('No se pudo enviar su mensaje. Por favor, inténtelo de nuevo.', true));
 				}
 		}		
 	}

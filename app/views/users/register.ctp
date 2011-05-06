@@ -67,7 +67,7 @@
 			<div style="clear:both"></div>
 			</div>
 			<div style="clear:both"></div>
-			<p>Al hacer click en el botón “Crear mi cuenta” a continuación, certifico que he leído y que acepto la <span>Condiciones de Servicio y Políticas de Privacidad de PriceShoes.com.co</span>, aceptando recibir comunicaciones electrónicas procedentes de <span>PriceShoes.com.co</span>, relacionadas con mi cuenta.</p>
+			<p>Al hacer click en el botón “Crear mi cuenta” a continuación, certifico que he leído y que acepto las <span> <?php echo $html->link("Condiciones de Servicio y Políticas de Privacidad de PriceShoes.com.co ",array("controller"=>"pages","action"=>"view","condiciones"),array("target"=>"_BLANK"));?></span>, aceptando recibir comunicaciones electrónicas procedentes de <span><?php echo $html->link("PriceShoes.com.co","/",array("target"=>"_BLANK"));?></span>, relacionadas con mi cuenta.</p>
 			<?php echo $form->end(__('Crear mi Cuenta', true), array('div' => false));?> 
 	<div style="clear:both;"></div>
 </div>

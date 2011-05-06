@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('category_id');
 		echo $this->Form->input('nombre');
+		echo $this->Form->input('referencia');
 		echo $this->Form->input('precio');
 		echo $this->Form->input('base_iva');
 		echo $this->Form->input('valor_iva');

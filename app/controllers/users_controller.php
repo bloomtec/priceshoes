@@ -54,7 +54,7 @@ class UsersController extends AppController {
 		  	$this->User->recursive = 0;		  
 			$this->User->create();
 			$this->data["User"]["role_id"]=2;// Is set as a Basic user for default
-			$this->data["UserField"]["fecha_nacimiento"]=date('d/m/Y', strtotime($this->data["UserField"]["fecha_nacimiento"]));
+			$this->data["UserField"]["fecha_nacimiento"]=$this->formatDate($this->data["UserField"]["fecha_nacimiento"]); 
 		  if ($this->User->saveAll($this->data,array("validate"=>false))) 
 			{
 		        $para      = $this->data['User']['email'];
@@ -85,7 +85,27 @@ class UsersController extends AppController {
 			}
 		}
 	}	
-	
+	function formatDate($dateToFormat){
+    $pattern1 = '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/i';
+    $pattern2 = '/^([0-9]{4})\/([0-9]{2})\/([0-9]{2})$/i';
+    $pattern3 = '/^([0-9]{2})-([0-9]{2})-([0-9]{4})$/i';
+    $pattern4 = '/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/i';
+
+    $coincidences = array();
+    
+    if(preg_match($pattern1, $dateToFormat)){
+        $newDate = $dateToFormat; 
+    }elseif(preg_match($pattern2, $dateToFormat, $coincidences)){
+        $newDate = $coincidences[1] . '-' . $coincidences[2] . '-' . $coincidences[3];
+    }elseif(preg_match($pattern3, $dateToFormat, $coincidences)){
+        $newDate = $coincidences[3] . '-' . $coincidences[2] . '-' . $coincidences[1];
+    }elseif(preg_match($pattern4, $dateToFormat, $coincidences)){
+        $newDate = $coincidences[3] . '-' . $coincidences[2] . '-' . $coincidences[1];
+    }else{
+        $newDate = null;
+    }
+    return $newDate;
+}  
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid user', true));
@@ -164,7 +184,7 @@ class UsersController extends AppController {
 		if (!empty($this->data)) {
 			$this->User->create();
 			if ($this->User->save($this->data)) {
-				$aro =& $this->Acl->Aro;
+				/*$aro =& $this->Acl->Aro;
 				 $elaro=$aro->find("first",array("conditions"=>array("Model"=>"Role","foreign_key"=>$this->data["User"]["role_id"])));
 				$newAro=array(
 					"alias"=>$this->data["User"]["username"],
@@ -173,7 +193,7 @@ class UsersController extends AppController {
 					"model"=>"User",
 				);
 				$aro->create();
-				$aro->save($newAro);
+				$aro->save($newAro);*/
 				$this->Session->setFlash(__('The user has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {

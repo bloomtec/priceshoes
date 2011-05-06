@@ -1,6 +1,6 @@
 <div id="mas-vendidos">
 		<div class="titulo">
-			<h1>Mas vendidos</h1>
+			<h1>Más vendidos</h1>
 		</div>
 	<?php $product = $this->requestAction('/products/masvendidos'); ?>
 	<?php if (!empty($product['Product'])):?>

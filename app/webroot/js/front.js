@@ -80,19 +80,21 @@ $(function(){
 		
 		//______________________________________
 		//Carga la primer galeria li selected
-		change($("ul.cuadros-colores li.selected"));
+		change($("ul.cuadros-colores > li.selected"));
 		
 		//Carga la galeria cuando se le da click a un cuadro de color
-		$("ul.cuadros-colores li").click(function(){
-			$("ul.cuadros-colores li").removeClass("selected");
+		$("ul.cuadros-colores > li").click(function(e){
+
+			$("ul.cuadros-colores > li").removeClass("selected");
 			$(this).addClass("selected");
 			that.change($(this));
 		});
 		//ACTUALIZA la talla.
-		$("ul.cuadros-tallas li").click(function(){
+		$("ul.cuadros-tallas li").click(function(e){
+			e.stopPropagation();
 			$("ul.cuadros-tallas li").removeClass("selected");
 			$(this).addClass("selected");
-		
+			
 		});
 		
 		//Reemplaza la imagen principal cuando se le hace click a un thumb

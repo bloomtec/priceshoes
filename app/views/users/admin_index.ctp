@@ -4,7 +4,7 @@
 	<tr>
 
 			<th><?php echo $this->Paginator->sort('role_id');?></th>
-			<th><?php echo $this->Paginator->sort('username');?></th>
+			<th><?php echo $this->Paginator->sort('email');?></th>
 			<th><?php echo $this->Paginator->sort('password');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('updated');?></th>
@@ -22,7 +22,7 @@
 		<td>
 			<?php echo $this->Html->link($user['Role']['name'], array('controller' => 'roles', 'action' => 'view', $user['Role']['id'])); ?>
 		</td>
-		<td><?php echo $user['User']['username']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['email']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['password']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['created']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['updated']; ?>&nbsp;</td>

@@ -52,7 +52,7 @@
 			<div class="logo">
 				<?php echo $this->Html->link(
 					$this->Html->image('logo_cms.png', array('alt'=> __('CMS: PriceShoes', true), 'border' => '0')),
-					array("controller"=>"users","action"=>"menu"),
+					array("controller"=>"products","action"=>"index"),
 					array('escape' => false)
 				);
 			?>

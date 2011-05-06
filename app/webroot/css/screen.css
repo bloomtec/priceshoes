@@ -1455,10 +1455,12 @@ form .submit input[type=submit]:hover {
 #producto-showcase .colores{
 	margin:18px 0;
 	font-size:15px;
+	
 }
 ul.cuadros-colores{
 	height: 25px;
 	margin-top:25px;
+	position:relative;
 }
 
 ul.cuadros-colores li:first-child{
@@ -1479,6 +1481,13 @@ ul.cuadros-colores li{
 #producto-showcase .tallas{
 	margin:5px 0;
 	font-size:15px;
+	position:absolute;
+	bottom:-100px;
+	display:none;
+	left:0;
+}
+#producto-showcase ul.cuadros-colores li.selected  .tallas{
+	display:block;
 }
 
 ul.cuadros-tallas{
@@ -1750,7 +1759,7 @@ ul.cuadros-tallas li.selected, ul.cuadros-colores li.selected{
 	margin-bottom: 10px;
 }
 
-#crear-usuario span{
+#crear-usuario span a{
 	color: #E62B7C;
 }
 
