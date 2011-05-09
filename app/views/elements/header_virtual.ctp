@@ -13,20 +13,31 @@
 			<ul>
 				<li>
 				<?php 
+					echo $html->link("Mi Carrito",
+            			array(
+							"controller"=>"carts","action"=>"view")
+						);
+				 ?>
+				</li>
+
+		        
+		        <li>
+				<?php 
 					echo $html->link("Mi Cuenta",
             			array(
 							"controller"=>"users","action"=>"login")
 						);
 				 ?>
 				</li>
-		        <li>
-		             <?php 
-            	echo $html->link("Registro",
+				
+				<li>
+				<?php 
+					echo $html->link("Registro",
             			array(
 							"controller"=>"users","action"=>"register")
 						);
-				?>
-		        </li>
+				 ?>
+				</li>
 			</ul>
 		</div>
 		<div id="main-nav">

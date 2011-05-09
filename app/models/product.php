@@ -23,6 +23,16 @@ class Product extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+			'referencia' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'precio' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -33,26 +43,8 @@ class Product extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'base_iva' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'valor_iva' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		
+		
 		'descripcion' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -80,7 +72,7 @@ class Product extends AppModel {
 		'Inventory' => array(
 			'className' => 'Inventory',
 			'foreignKey' => 'product_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -91,6 +83,11 @@ class Product extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
+	function beforeSave($options){
+		$this->data["Product"]["base_iva"]=$this->data["Product"]["precio"]/$this->data["Product"]["tarifa_iva"];
+		return true;
+		
+		
+	}
 }
 ?>

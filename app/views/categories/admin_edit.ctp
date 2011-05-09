@@ -14,7 +14,7 @@
 <div class="images">
 		<h2>Imagen</h2>
 		<div class="preview">
-			<?php echo $html->image($this->data["Category"]["imagen"]);?>
+			<?php echo $this->Html->image("uploads/".$this->data['Category']['imagen'],array("width"=>200));?>
 		</div>
 		<div id="single-upload" controller="colecciones"> </div>
 		

@@ -31,18 +31,18 @@
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('uploadify');
 		echo $this->Html->css('superfish');
+		echo $this->Html->css("jquery-ui.css");
+		echo $this->Html->css("colorpicker");
 		echo $this->Html->script("jquery.js");
 		echo $this->Html->script("admin.js");
 		echo $this->Html->script("jquery-ui.js");
-		echo $this->Html->script("swfobject.js");
+		echo $this->Html->script("swfobject.js"); 
 		echo $this->Html->script("jquery.uploadify.v2.1.4.min.js");
 		echo $this->Html->script("upload.js");
 		echo $this->Html->script("superfish.js");
 		echo $this->Html->script("ckeditor/ckeditor");
 		echo $this->Html->script("fileBrowser");
-
-		echo $this->Html->css("jquery-ui.css");
-
+		echo $this->Html->script("colorpicker");
 		echo $scripts_for_layout;
 	?>
 </head>
@@ -126,12 +126,7 @@
 
 		</div>
 		<div id="footer">
-			<?php /*echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt'=> __('CakePHP: the rapid development php framework', true), 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);*/
-			?>
+
 		</div>
 		<?php //echo $this->element("developer-utilities");?>
 	</div>

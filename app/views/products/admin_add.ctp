@@ -7,8 +7,7 @@
 		echo $this->Form->input('nombre');
 		echo $this->Form->input('referencia');
 		echo $this->Form->input('precio');
-		echo $this->Form->input('base_iva');
-		echo $this->Form->input('valor_iva');
+		echo $this->Form->hidden('tarifa_iva',array("value"=>"1.16"));
 		
 		
 	
@@ -18,6 +17,7 @@
 		<?php
 		//echo $this->Form->input('order');
 		echo $this->Form->input('descripcion');
+		echo $this->Form->hidden('imagen',array("id"=>"single-field"));
 		echo $this->Form->input('activo');
 		echo $this->Form->input('promocionar');
 		echo $this->Form->input('novedad');

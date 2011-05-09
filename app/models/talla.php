@@ -20,7 +20,7 @@ class Talla extends AppModel {
 		'Inventory' => array(
 			'className' => 'Inventory',
 			'foreignKey' => 'talla_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

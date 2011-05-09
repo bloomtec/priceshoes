@@ -24,7 +24,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $category['Category']['id'])); ?>
 			<?php echo $this->Html->link(__('Modificar', true), array('action' => 'edit', $category['Category']['id'])); ?>
-			<?php echo $this->Html->link(__('Borrar', true), array('action' => 'delete', $category['Category']['id']), null, sprintf(__('Está seguro que desea borrar la categoría ?', true), $category['Category']['id'])); ?>
+			<?php echo $this->Html->link(__('Borrar', true), array('action' => 'delete', $category['Category']['id']), null, sprintf(__('Está seguro que desea borrar la categoría y todos sus productos ?', true), $category['Category']['id'])); ?>
 			<?php if(!$category['Category']['promocionar']){ echo $this->Html->link(__('Promocionar', true), array('action' => 'updateField', $category['Category']['id'],"promocionar",true)); ?>
 			<?php }else{ echo $this->Html->link(__('Dejar de promocionar', true), array('action' => 'updateField', $category['Category']['id'],"promocionar",false)); }?>
 		</td>

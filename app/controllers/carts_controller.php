@@ -104,6 +104,7 @@ class CartsController extends AppController {
 	}
 
 	function view() {
+		$this->layout="virtual";
 	}
 
 	function remove() {

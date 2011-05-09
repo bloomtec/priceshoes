@@ -2,7 +2,7 @@
 	<h2><?php __('Colores');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th>Color</th>
 			<th><?php echo $this->Paginator->sort('nombre');?></th>
 			<th><?php echo $this->Paginator->sort('codigo');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -16,13 +16,13 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $color['Color']['id']; ?>&nbsp;</td>
+		<td><div style="background:<?php echo $color['Color']['codigo']; ?>; width:50px; height:50px;"></div></td>
 		<td><?php echo $color['Color']['nombre']; ?>&nbsp;</td>
-		<td><?php echo $color['Color']['codigo']; ?>&nbsp;</td>
+		<td>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $color['Color']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $color['Color']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $color['Color']['id']), null, sprintf(__('Está seguro que desea eliminar el color ?', true), $color['Color']['id'])); ?>
+		
+			<?php echo $this->Html->link(__('Modificar', true), array('action' => 'edit', $color['Color']['id'])); ?>
+			<?php echo $this->Html->link(__('Borrar', true), array('action' => 'delete', $color['Color']['id']), null, sprintf(__('Está seguro que desea eliminar el color ?', true), $color['Color']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

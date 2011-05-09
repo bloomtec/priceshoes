@@ -29,12 +29,21 @@
 </div>
 
 <div class="favoritos-virtual">
-	<h3>Favoritos</h3>
+	<h3><?php 
+					echo $html->link("Favoritos",
+            			array(
+							"controller"=>"users","action"=>"favoritos")
+						);
+				 ?></h3>
 	<p>Es fácil asignar etiquetas a sus favoritos.</p>
 </div>
 
 <div class="opciones-virtual">
-	<h3>Mi Cuenta</h3>
+	<h3><?php 	echo $html->link("Mi Cuenta",
+            			array(
+							"controller"=>"users","action"=>"login")
+						);
+				 ?></h3>
 		<ul>
 			<li>
 				<?php echo $html->link("Registro",array("controller"=>"users","action"=>"register"))?>
@@ -70,7 +79,10 @@
 			<?php echo $html->link("Franquicias",array("controller"=>"pages","action"=>"view","franquicias"))?>
 		</li>
 		<li>
-			<?php echo $html->link("Contacto",array("controller"=>"pages","action"=>"contacto"))?>
+			<?php echo $html->link("Envíos & Devoluciones",array("controller"=>"pages","action"=>"view","envios-devoluciones"))?>
+		</li>
+		<li>
+			<?php echo $html->link("Compra Segura",array("controller"=>"pages","action"=>"view","compra-segura"))?>
 		</li>
 		<!--
 		<li>

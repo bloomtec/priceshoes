@@ -40,6 +40,9 @@ datos (# tarjeta y cod verificacion; cc; datos de envio - departamento, ciudad y
 	//	echo $form->input("Order.pago_estado", array('type'=>'text', 'label'=>'Estado'));
 		echo $form->input("Order.tarjeta_numero", array('type'=>'text', 'label'=>'Número De La Tarjeta',"required"=>"required"));
 		echo $form->input("Order.tarjeta_codigo", array('type'=>'text', 'label'=>'Código De Verificación',"required"=>"required"));
+		echo $form->label("Valida hata:");
+		echo $form->input("Order.ano_vencimiento", array('label'=>false,'type'=>"select","required"=>"required","options"=>array("2011"=>"2011","2012"=>"2012","2013"=>"2013","2014"=>"2014","2015"=>"2015","2016"=>"2016","2017"=>"2017","2018"=>"2018","2019"=>"2019","2020"=>"2020")));
+		echo $form->input("Order.mes_vencimiento", array('label'=>false,'type'=>"select","required"=>"required","options"=>array("01"=>"01","02"=>"02","03"=>"03","04"=>"04","05"=>"05","06"=>"06","07"=>"07","08"=>"08","09"=>"09","10"=>"10","11"=>"11","12"=>"12")));
 		
 	?>
 	</div>

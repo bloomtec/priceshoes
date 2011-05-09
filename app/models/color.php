@@ -31,7 +31,7 @@ class Color extends AppModel {
 		'Inventory' => array(
 			'className' => 'Inventory',
 			'foreignKey' => 'color_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

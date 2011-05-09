@@ -30,7 +30,7 @@ body {
 	margin: 0;
 }
 a {
-	color: #003d4c;
+	color: #EA589A;
 	text-decoration: underline;
 	font-weight: bold;
 }
@@ -52,7 +52,7 @@ h1 {
 }
 h2 {
 	background:#fff;
-	color: #e32;
+	color: #EA589A;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
 }
@@ -84,7 +84,7 @@ ul, li {
 	padding: 0px 30px;
 }
 #header h1 a {
-	color: #fff;
+	color: #EA589A;
 	background: #003d4c;
 	font-weight: normal;
 	text-decoration: none;
@@ -113,9 +113,7 @@ ul, li {
 div.form,
 div.index,
 div.view {
-	float:right;
 	width:76%;
-	border-left:1px solid #666;
 	padding:10px 2%;
 }
 div.actions {
@@ -154,7 +152,7 @@ table {
 	background: #fff;
 	border-right:0;
 	clear: both;
-	color: #333;
+	color: #333333;
 	margin-bottom: 10px;
 	width: 100%;
 }
@@ -163,6 +161,9 @@ th {
 	border-bottom:2px solid #555;
 	text-align: left;
 	padding:4px;
+}
+th.actions{
+	color:#EA589A;
 }
 th a {
 	display: block;
@@ -195,6 +196,7 @@ td.actions {
 table td.actions a {
 	margin: 0px 6px;
 	padding:2px 5px;
+	color: black;
 }
 .cake-sql-log table {
 	background: #f4f4f4;
@@ -259,7 +261,7 @@ fieldset {
 }
 fieldset legend {
 	background:#fff;
-	color: #e32;
+	color: #EA589A;
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -345,17 +347,13 @@ input[type=submit] {
 	width: auto;
 }
 form .submit input[type=submit] {
-	background:#62af56;
-	background: -webkit-gradient(linear, left top, left bottom, from(#a8ea9c), to(#62af56));
-	background-image: -moz-linear-gradient(top, #a8ea9c, #62af56);
+	background:#EA589A;	
 	border-color: #2d6324;
 	color: #000;
-	text-shadow: #8cee7c 0px 1px 0px;
 }
 form .submit input[type=submit]:hover {
-	background:#4ca83d;
-	background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
-	background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
+	background:#EA589A;
+
 }
 
 /** Notices and Errors **/
@@ -428,23 +426,19 @@ div.actions ul li a,
 td.actions a {
 	font-weight:normal;
 	padding: 4px 8px;
-	background:#e6e49f;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f1f1d4), to(#e6e49f));
-	background-image: -moz-linear-gradient(top, #f1f1d4, #e6e49f);
-	color:#333;
+	background:#EA589A;
+	color:#EA589A;
 	border:1px solid #aaac62;
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
 	border-radius:8px;
 	text-decoration:none;
-	text-shadow: #fff 0px 1px 0px;
 	min-width: 0;
 }
 input[type=submit]:hover,
 div.actions ul li a:hover,
 td.actions a:hover {
-	background: #f0f09a;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7e1), to(#eeeca9));
+	background: #EA589A;
 }
 
 /** Related **/
@@ -607,7 +601,7 @@ p {
 	height:40px;
 }
 #menu_principal li .nombre a {
-	color:#0094e1;
+	color:#EA589A;
 	display:block;
 	width:121px;
 	padding-left:8px;

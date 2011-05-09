@@ -93,7 +93,7 @@ ul, li {
 }
 
 #cesta-tabla a {
-	color:white;
+	color:#E62B7C;
 }
 
 #cesta-tabla tr {
@@ -145,7 +145,7 @@ table {
 	background: #fff;
 	border-right:0;
 	clear: both;
-	color: #333;
+	color: #333333;
 	margin-bottom: 10px;
 	width: 100%;
 }
@@ -219,7 +219,7 @@ fieldset {
 }
 fieldset legend {
 	background:#fff;
-	color: #e32;
+	color: #EA589A;
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -374,7 +374,7 @@ form .submit input[type=submit]:hover {
 	}
 	
 #header .opciones ul a {
-	color:#ffffff;
+	color:#E62B7C;
 	margin: 0 27px;
 	}	
 
@@ -523,7 +523,7 @@ form .submit input[type=submit]:hover {
 	}
 	
 #header-virtual .opciones ul a {
-	color:#ffffff;
+	color:#E62B7C;
 	margin: 0 10px;
 	}	
 
@@ -580,7 +580,7 @@ form .submit input[type=submit]:hover {
 	}
 
 #virtual a {
-	color:#E63485;
+	color:#E62B7C;
 	font-weight: bold;
 	}
 #virtual a.no-color {
@@ -659,7 +659,7 @@ form .submit input[type=submit]:hover {
 	}
 
 #destacados a {
-	color:#E63485;
+	color:#E62B7C;
 	font-weight: bold;
 	}
 
@@ -779,8 +779,7 @@ form .submit input[type=submit]:hover {
 #footer .favoritos{
 	float:right;
 	font-size:13px;
-	margin-left:60px;
-	margin-right:40px;	
+	margin-left:60px;	
 }
 
 #footer .favoritos p{
@@ -944,7 +943,10 @@ form .submit input[type=submit]:hover {
 	font-size: 13px;
 	color:white;
 	}
-
+	
+#footer  .opciones-virtual h3 a,#footer  .opciones-virtual h3 a:active, #footer  .opciones-virtual h3 a:visited, #footer  .favoritos-virtual h3 a,#footer  .favoritos-virtual h3 a:active, #footer  .favoritos-virtual h3 a:visited {
+	color:#E62B7C;
+}
 #footer .favoritos-virtual{
 	float:right;
 	font-size:13px;
@@ -1134,7 +1136,7 @@ form .submit input[type=submit]:hover {
 	background: url("../img/trama.png") repeat-x transparent;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-    color: white;
+    color: #E62B7C;
     display: block;
     font-size: 14px;
     font-weight: bold;
@@ -1188,7 +1190,7 @@ form .submit input[type=submit]:hover {
 	background: url("../img/trama.png") repeat-x transparent;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-    color: white;
+    color: #E62B7C;
     display: block;
     font-size: 14px;
     font-weight: bold;
@@ -1216,7 +1218,7 @@ form .submit input[type=submit]:hover {
 
 #right-content-virtual .descripcion-categoria h2 a,#right-content-virtual .descripcion-categoria h2 {
 	text-transform:uppercase;
-	color: #E62B7C;
+	color: #EA589A;
 	font-weight: normal;
 	margin-left:7px;
 	margin-top:12px;
@@ -1633,7 +1635,7 @@ ul.cuadros-tallas li.selected, ul.cuadros-colores li.selected{
 #registro h2{
 	font-size: 21px;
 	font-weight: normal;
-	color: #E62B7C;
+	color: #EA589A;
 	margin-bottom: 10px;
 }
 
@@ -1755,7 +1757,7 @@ ul.cuadros-tallas li.selected, ul.cuadros-colores li.selected{
 #crear-usuario h2{
 	font-size: 21px;
 	font-weight: normal;
-	color: #E62B7C;
+	color: #EA589A;
 	margin-bottom: 10px;
 }
 
@@ -1905,7 +1907,6 @@ ul.cuadros-tallas li.selected, ul.cuadros-colores li.selected{
 	float:left;
 	width: 100%;
 	margin-top: 14px;
-	margin-bottom: 20px;
 }
 
 #cesta table tr td {
@@ -2118,7 +2119,7 @@ form .layer{
 }
 .carrito td, .carrito tr, .carrito table{
 	background:none;
-	color:white;
+	color:#333333;
 }
 .carrito table{
 
@@ -2145,7 +2146,7 @@ form .layer{
 	
 }
 .mi-cuenta h2{
-	color:white;
+	color:#EA589A;
 }
 .userMenu li{
 	margin-bottom:0.5em;
@@ -2178,3 +2179,10 @@ table#ordenes tr td{
 .pages{
 	color:white;
 }
+
+#confirmarOrden select{  float: left; }
+#confirmarOrden select{float:left;}
+#confirmarOrden .select{float:left;}
+.confirmarOrden select{float:left;}
+.confirmarOrden .select{float:left;margin-right: 1em; margin-bottom: 1em; }
+
