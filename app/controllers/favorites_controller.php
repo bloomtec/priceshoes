@@ -9,6 +9,7 @@ class FavoritesController extends AppController {
 			$this->Auth->deny("admin_index","admin_view","admin_add","admin_edit","admin_delete");
 	
 	}
+
 	function ajaxAdd(){
 		$favorite["Favorite"]["user_id"]=$this->Auth->user("id");
 		$favorite["Favorite"]["product_id"]=$_POST["product_id"];

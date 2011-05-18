@@ -362,6 +362,7 @@ form .submit input[type=submit]:hover {
      color:#ffffff;
      text-transform:uppercase;
      clear:right;
+     margin-top: 17px;
 	}	
 	
 #header .opciones ul {
@@ -374,8 +375,8 @@ form .submit input[type=submit]:hover {
 	}
 	
 #header .opciones ul a {
-	color:#E62B7C;
-	margin: 0 27px;
+	color:white;
+	margin: 0 10px;
 	}	
 
 #header .opciones ul a:hover{

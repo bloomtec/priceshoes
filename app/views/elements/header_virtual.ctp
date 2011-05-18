@@ -11,15 +11,7 @@
 		
 		<div class="opciones">
 			<ul>
-				<li>
-				<?php 
-					echo $html->link("Mi Carrito",
-            			array(
-							"controller"=>"carts","action"=>"view")
-						);
-				 ?>
-				</li>
-
+				
 		        
 		        <li>
 				<?php 
@@ -29,7 +21,23 @@
 						);
 				 ?>
 				</li>
-				
+				<li>
+				<?php 
+					echo $html->link("Mi Carrito",
+            			array(
+							"controller"=>"carts","action"=>"view")
+						);
+				 ?>
+				</li>
+				<li>
+				<?php 
+					echo $html->link("Mis Favoritos",
+            			array(
+							"controller"=>"favorites","action"=>"index")
+						);
+				 ?>
+				</li>
+
 				<li>
 				<?php 
 					echo $html->link("Registro",
